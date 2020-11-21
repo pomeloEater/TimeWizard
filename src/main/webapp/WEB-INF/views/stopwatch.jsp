@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>TimeWizard</title>
+<title>TiWi :: stopwatch timer</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Electrolize&display=swap" rel="stylesheet">
 <link href="resources/css/stopwatch.css" rel="stylesheet">
@@ -37,7 +37,7 @@
 	
 	<div id="timer_box">
 		<div id="timer_time">
-			<div id="timer">00:00</div>
+			<div id="timer">00:00:00</div>
 		</div>
 		<div id="timer_limit">
 			<div id="timer_setting">Set </div>
@@ -52,24 +52,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

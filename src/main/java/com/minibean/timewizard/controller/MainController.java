@@ -1,6 +1,5 @@
 package com.minibean.timewizard.controller;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -13,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -79,47 +77,6 @@ public class MainController {
         return (Integer) request.getAttribute("javax.servlet.error.status_code");
     }
 	
-    /* test 용입니다 */
-	@RequestMapping(value="/success")
-	public String successPage() {
-		return "success";
-	}
-	@RequestMapping(value="/webrtctest")
-	public String webRTCTestPage() {
-		return "rtcmulticonnection";
-	}
-	@RequestMapping(value="/fileuploadtest")
-	public String fileUploadTestPage() {
-		return "fileuploadtest";
-	}
-	
-	/* 삭제해도 되는지 확인해주세요 @용민 */
-	@RequestMapping(value="/finalnotice")
-	public String finalnotice() {
-		return "notice";
-	}
-	
-	@RequestMapping("/indexpage")
-	public String Indexpage() {
-		logger.info("[indexpage]");
-		return "indexpage";
-	}
-
-	@RequestMapping(value="/finalnoticedetail")
-	public String finalnoticedetail() {
-		return "notice_detail";
-	}
-	
-	@RequestMapping(value="/finalstopwatch")
-	public String finalstopwatch() {
-		return "finalstopwatch";
-	}
-	
-	@RequestMapping(value="/finaltimer")
-	public String finaltimer() {
-		return "finaltimer";
-	}
-	
 	@RequestMapping(value="/main")
 	public String PlainMain(HttpSession session , Model model) {
 		logger.info(">> [CONTROLLER-MAIN] move to main page");
@@ -132,7 +89,6 @@ public class MainController {
 	
 			
 			return "redirect:./user/"+user_distinct;
-		 	
 	}
 	
 	@RequestMapping(value="/user/{user_distinct}")
@@ -179,14 +135,7 @@ public class MainController {
 	
 	@RequestMapping(value = "/tiwimap", method = RequestMethod.GET)
 	public String tiwiMap(Model model) {
-		
 		return "tiwimap";
 	}
-
-	@RequestMapping(value = "/socketTest", method = RequestMethod.GET)
-	public String socketTest() {
-		return "socketTest";
-	}
-	
 	
 }
