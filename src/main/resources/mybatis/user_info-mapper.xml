@@ -21,6 +21,16 @@
 			ui.USER_ROLE, ui.USER_PHOTO, ui.USER_ACTIVE, ui.USER_DISTINCT, ui.USER_REGDATE 
 		FROM USER_INFO ui 
 		WHERE USER_ID = #{user_id}
+		AND USER_PW = #{user_pw}
+		AND USER_ACTIVE = 'Y'
+	</select>
+	
+	<!-- 비밀번호 암호화한 후 로그인! -->
+	<select id="loginBcrypt" parameterType="UserInfoDto" resultType="UserInfoDto">
+		SELECT ui.USER_NO, ui.USER_ID, ui.USER_PW, ui.USER_NAME, ui.USER_EMAIL, 
+			ui.USER_ROLE, ui.USER_PHOTO, ui.USER_ACTIVE, ui.USER_DISTINCT, ui.USER_REGDATE 
+		FROM USER_INFO ui 
+		WHERE USER_ID = #{user_id}
 		AND USER_ACTIVE = 'Y'
 	</select>
 	

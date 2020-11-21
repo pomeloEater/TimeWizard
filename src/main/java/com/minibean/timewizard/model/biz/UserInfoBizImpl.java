@@ -99,4 +99,9 @@ public class UserInfoBizImpl implements UserInfoBiz {
 		return userInfoDao.findPW(map);
 	}
 
+	@Override
+	public UserInfoDto login(UserInfoDto dto) {
+		return userInfoDao.login(dto);
+	}
+
 }

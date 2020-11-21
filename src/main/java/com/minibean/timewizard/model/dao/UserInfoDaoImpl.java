@@ -218,4 +218,17 @@ public class UserInfoDaoImpl implements UserInfoDao {
 		return result;
 	}
 
+	@Override
+	public UserInfoDto login(UserInfoDto dto) {
+		logger.info(">> [UserINFO] login : user_id & user+pw : "+dto.getUser_id()+", "+dto.getUser_pw());
+		UserInfoDto result = null;
+		try {
+			result = sqlSession.selectOne(NAMESPACE+"loginBcrypt", dto);
+		} catch (Exception e) {
+			logger.info("[ERROR] login ");
+			e.printStackTrace();
+		}
+		return result;
+	}
+
 }
