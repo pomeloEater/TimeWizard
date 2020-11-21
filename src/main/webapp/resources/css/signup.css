@@ -68,7 +68,7 @@ a {
   font-weight: 200;
 }
 
-#sign-up-form input {
+.sign-up-form input {
   margin: 12px;
   font-size: 14px;
   padding: 15px;
@@ -81,7 +81,7 @@ a {
   padding-left: 20px;
 }
 
-#sign-up-form input::placeholder{
+.sign-up-form input::placeholder{
   letter-spacing: 1px;
 }
 
@@ -114,9 +114,6 @@ a {
   background: none;
   border-radius: 20px;
   color: white;
-}
-
-.control-button{
   border: none;
   margin-top: 15px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
