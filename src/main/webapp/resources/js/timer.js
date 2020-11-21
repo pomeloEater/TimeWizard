@@ -1,36 +1,31 @@
-var Hcount = 0;
-var Mcount = 0;
-var Htime = 0;
-var Mtime = 0;
+var hour_count = 0;
+var minute_count = 0;
+var hour_time = 0;
+var minute_time = 0;
+var hour = "";
 var min = "";
 var sec = "";
 
 function hours() {
 	var hourtime = 3600;
-	Hcount++;
-	Htime = Hcount*hourtime;
+	hour_count++;
+	hour_time = hour_count * hourtime;
 	
-	console.log(Hcount);
-	console.log(Htime);
-	
-	document.getElementById("timer_setting").innerHTML = "Set " + ((Htime/60) + (Mtime/60));
+	document.getElementById("timer_setting").innerHTML = "Set " + ((hour_time/60) + (minute_time/60));
 	
 }
 
 function mins() {
 	var mintime = 600;
-	Mcount++;
-	Mtime = Mcount*mintime;
+	minute_count++;
+	minute_time = minute_count*mintime;
 	
-	console.log(Mcount);
-	console.log(Mtime);
-	
-	document.getElementById("timer_setting").innerHTML = "Set " + ((Htime/60) + (Mtime/60));
+	document.getElementById("timer_setting").innerHTML = "Set " + ((hour_time/60) + (minute_time/60));
 	
 }
 
 function start() {
-	var time = Htime+Mtime;
+	var time = hour_time+minute_time;
 	var x = setInterval(function () {
 		min = parseInt(time/60);
 		sec = time%60;
@@ -68,10 +63,10 @@ function start() {
 }
 
 function reset() {
-	Hcount = 0;
-	Mcount = 0;
-	Htime = 0;
-	Mtime = 0;
+	hour_count = 0;
+	minute_count = 0;
+	hour_time = 0;
+	minute_time = 0;
 	
 	$('#timer_start').attr('onclick', 'start()');
 	$('#timer_hour').attr('onclick', 'hours()');
