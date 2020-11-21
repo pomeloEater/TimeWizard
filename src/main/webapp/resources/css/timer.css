@@ -1,0 +1,39 @@
+	body {
+		font-family: 'Electrolize';
+	}
+	
+	#timer_box {
+		width: 100%;
+		background-color: #273c75;
+	}
+	
+	#timer {
+		font-size: 40px;
+		font-weight: bold;
+		text-align: center;
+	}
+
+	#timer_time {
+		width: 100%;
+		color: white;
+	}
+	
+	#timer_limit {
+		width: 100%;
+		color: white;
+	}
+	
+	#timer_setting {
+	}
+	
+	#timer_menu {
+		width: 100%;
+		text-align: center;
+		padding-bottom: 10px;
+	}
+	
+	#timer_menu i {
+		cursor: pointer;
+		font-size: 30px;
+		color: white;
+	}

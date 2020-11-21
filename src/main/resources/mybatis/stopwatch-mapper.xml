@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.minibean.timewizard.stopwatch">
+	<select id="selectDayList" parameterType="java.util.Date" resultType="StopwatchDto"></select>
+	<select id="selectTodoOne" parameterType="int" resultType="StopwatchDto"></select>
+	<insert id="insert" parameterType="StopwatchDto"></insert>
+	<update id="update" parameterType="StopwatchDto"></update>
+	<delete id="delete" parameterType="int"></delete>
+</mapper>

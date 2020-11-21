@@ -1,0 +1,185 @@
+:root {
+    --text-color: #f0f4f5;
+    --background-color: #263343;
+    --accent-color: #ff6b6b;
+    --point-color: #96DBE2;
+	--color: #E0E0E0;
+}
+
+body {
+	margin: 0;
+	overflow: auto;
+    font-family: 'Staatliches';
+}
+
+.contentsection {
+	float: left;
+	width: 85%;
+}
+
+.friendsbar {
+	float: left;
+	width: 15%;
+	height: 100%;
+	border-left: 1px solid black;
+	overflow: auto;
+}
+
+input[type=button] {
+	background-color: var(--background-color);
+	color: white;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: 0.4s;
+}
+
+input[type=button]:hover, .searchBtn:hover {
+	background-color: white;
+	color: var(--background-color);
+}
+
+.fixedtop {
+	border-bottom: 1px solid var(--color);
+	width: 100%;
+	height: 5rem;
+	display: flex;
+	justify-content: space-between;
+}
+
+.logo {
+	display: flex;
+	padding: 8px 12px;
+}
+
+.titlelogo {
+	display: flex;
+	width: 100px;
+}
+
+.titlename {
+	display: flex;
+}
+
+.menu {
+	display: flex;
+	padding: 8px 12px;
+	height: 100%;
+}
+
+#searchArea{
+	display: flex; 
+	height: 2.5%;
+}
+
+#search{
+	width: 100%;
+}
+
+
+#searchBtn {
+	background-color: var(--point-color);
+	color: white;
+}
+
+.searchBtn {
+	background-color: var(--background-color);
+	color: var(--color);
+	border-radius: 4px;
+	cursor: pointer;
+	border: 1px solid var(--color);
+	transition: 0.4s;
+}
+
+.createroom {
+	margin-left: 1rem;
+}
+
+.contentmain {
+	width: 90%;
+	margin-left: 10%;
+	margin-top: 3vh;
+}
+
+.grouproom {
+	float: left;
+	width: 20%;
+	padding: 15px;
+	cursor: pointer;
+}
+
+.groupimg {
+	border-radius: 4px 4px 0px 0px;
+	height: 10rem;
+	background-size: 100% 100%;
+}
+
+.grouptitle {
+	background-color: var(--background-color);
+	color: white;
+	padding: 4px;
+}
+
+.groupmain {
+	background-color: var(--color);
+	border-radius: 0px 0px 4px 4px;
+	padding: 4px;
+}
+
+.group1 {
+	width: 10%;
+}
+
+.group2 {
+	width: 30%;
+}
+
+.groupid {
+	color: var(--accent-color);
+}
+
+
+#example {
+	margin-top: 5%;
+	margin-left: 20%;
+	width: 1000px;
+	height: 1000px;
+	border: 1px solid black;
+}
+
+
+@media screen and (max-width: 1140px) {
+
+	.fixedtop {
+		position: relative;
+		display: block;
+		z-index: 999;
+		background-color: white;
+		height: 10%;
+	}
+
+	.fixedmain {
+		position: relative;
+		display: block;
+		width: 100%;
+		top: 0;
+	}
+
+	.logo {
+		height: 10vh;
+	}
+
+	.grouproom {
+		display: block;
+		width: 95%;
+	}
+}
+
+
+
+
+
+
+
+
+
+

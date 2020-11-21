@@ -1,0 +1,189 @@
+:root {
+    --text-color: #f0f4f5;
+    --background-color: #263343;
+	--accent-color: #ff6b6b;
+	--color: #E0E0E0;
+}
+	
+	body {
+		margin: 0;
+		font-family: 'Staatliches';
+	}
+
+	.mainsection {
+		height: 100%;
+	}
+
+	.top {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.home {
+		font-size: 24px;
+		padding: 12px 12px 12px 0px;
+	}
+
+	h1 {
+		margin-left: 2rem;
+	}
+
+	th {
+		padding: 12px;
+	}
+
+	td {
+		text-align: center;
+		padding: 12px;
+	}
+
+	td a {
+		color: black;
+	}
+	
+	a {
+		text-decoration: none;
+	}
+	
+	.notice_text {
+		border-bottom: 1px solid black;
+	}
+	
+	.notice_list {
+		border-bottom: 1px solid black;
+	}	
+
+	#noticeBoard {
+		width: 80%;
+		margin-left: 10%;
+		margin-top: 10vh;
+		border-bottom: 1px solid black;
+	}
+
+	form {
+		display: flex;
+	}
+	
+	#search {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.searchType {
+		display: flex;
+		width: 25%;
+	}
+	
+	#search_box {
+		height: 30px;
+		width: 100%;
+		border: 1px solid black;
+		display: flex;
+	}
+	
+	#search_text {
+		font-size: 16px;
+		width: 85%;
+		padding: 6px;
+		border: 0px;
+		display: flex;
+	}
+	
+	#search_button {
+		width: 15%;
+		height: 100%;
+		background: black;
+		color: white;
+		cursor: pointer;
+		display: flex;
+		font-size: 20px;
+		justify-content: center;
+		align-items: center;
+	}
+
+	#paging_box {
+		cursor: pointer;
+		text-align: center;
+	}
+	
+	.trash {
+		cursor: pointer;
+	}
+	
+	.write {
+		cursor: pointer;
+		font-size: 24px;
+		padding: 20px 30px;
+	}
+	
+	.pagingdesign {
+	    width: 100%;
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	}
+
+	.pagingbox {
+		justify-content: center;
+	    align-items: center;
+		display: flex;
+		width: 100%;
+	}
+
+	.pagingdesign nav ul {
+		display: flex;
+		list-style: none;
+	}
+
+	.pagingdesign nav ul li {
+		display: flex;
+	}
+
+	li a {
+		
+	}
+
+	.pagingtext {
+		justify-content: center;
+	    align-items: center;
+		display: flex;
+		border: 1px solid var(--color);
+		border-radius: 50%;
+		font-size: 18px;
+		width: 30px;
+		height: 30px;
+		margin-left: 4px;
+		margin-right: 4px;
+		color: var(--color);
+		background-color: var(--background-color);
+	}
+
+	.pagingarrow {
+		font-size: 24px;
+	}
+
+	.active {
+		color: black;
+	}
+
+@media screen and (max-width: 1140px) {
+
+	#noticeBoard {
+		width: 90%;
+		margin-left: 5%;
+		margin-top: 5vh;
+		border-bottom: 1px solid black;
+	}
+
+	.pagingdesign {
+		width: 90%;
+	}
+
+	td {
+		padding: 8px;
+	}
+}
+	
+	

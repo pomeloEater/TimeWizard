@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="calboard">
+
+	<insert id="insertCalBoard" parameterType="CalendarDto">
+		INSERT INTO CALBOARD
+		VALUES(CALBOARDSEQ.NEXTVAL, #{user_no}, #{cal_title} ,#{cal_content} ,#{cal_mdate},SYSDATE )
+	</insert>
+	
+	
+	<select id="getCalList" resultType="CalendarDto" parameterType="hashMap">
+	 	SELECT CAL_NO,USER_NO , CAL_TITLE, CAL_CONTENT, CAL_MDATE, CAL_REGDATE
+				FROM CALBOARD 
+				WHERE USER_NO = #{user_no} 
+				AND SUBSTR(CAL_MDATE,1,8) = #{yyyyMMdd}
+				ORDER BY CAL_NO DESC
+				
+	</select>
+	
+	<select id="getViewList" resultType="CalendarDto" parameterType="hashMap">
+		SELECT CAL_NO, USER_NO, CAL_TITLE, CAL_CONTENT, CAL_MDATE, CAL_REGDATE
+					  FROM 
+				(SELECT (ROW_NUMBER() OVER (PARTITION BY SUBSTR(CAL_MDATE,1,8) ORDER BY CAL_MDATE))RN, 
+					  CAL_NO,
+					  USER_NO ,
+					  CAL_TITLE ,
+					  CAL_CONTENT, 
+					  CAL_MDATE,
+					  CAL_REGDATE
+					  FROM CALBOARD 
+					  WHERE USER_NO = #{user_no}	
+					  							
+					  AND SUBSTR(CAL_MDATE,1,6)= #{yyyyMM} )  
+				      WHERE RN BETWEEN 1 AND 3
+	</select>
+	
+	<select id="selectOne" resultType="CalendarDto">
+	
+		SELECT CAl_NO, CAl_TITLE, CAl_CONTENT, CAl_MDATE, CAl_REGDATE
+		FROM CALBOARD
+		WHERE CAL_NO = #{cal_no}
+		
+	</select>
+	
+	<select id="getView" resultType="CalendarDto">
+		SELECT CAl_TITLE, CAl_MDATE, CAl_NO
+		FROM CALBOARD
+		WHERE USER_NO = #{user_no} AND (CAL_MDATE BETWEEN TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS') AND TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS')+1)
+		ORDER BY CAL_MDATE
+	</select>
+	
+	<update id="update" parameterType="CalendarDto" >
+		UPDATE CALBOARD
+		SET CAL_TITLE = #{cal_title}, CAl_CONTENT = #{cal_content}
+		WHERE CAL_NO = #{cal_no}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM CALBOARD
+		WHERE CAL_NO = #{cal_no}
+	</delete>
+	
+	
+	<!-- <select id="getViewList" resultType="CalendarDto" parameterType="hashMap" >
+		
+		SELECT CAL_NO,USER_NO, CAL_TITLE, CAL_CONTENT, CAL_MDATE, CAL_REGDATE,USER_NAME
+					  FROM 
+				(SELECT (ROW_NUMBER() OVER (PARTITION BY SUBSTR(CAL_MDATE,1,8) ORDER BY CAL_MDATE))RN, 
+					  CALBOARD.CAL_NO,
+					  CALBOARD.USER_NO,
+					  CALBOARD.CAL_TITLE ,
+					  CALBOARD.CAL_CONTENT, 
+					  CALBOARD.CAL_MDATE,
+					  CALBOARD.CAL_REGDATE,
+					  USER_INFO.USER_NAME
+					  FROM CALBOARD
+					  JOIN USER_INFO ON CALBOARD.USER_NO = USER_INFO.USER_NO
+					  WHERE CALBOARD.USER_NO = #{user_no}	
+					  AND SUBSTR(CAL_MDATE,1,6)= #{yyyyMM} ) 
+				      WHERE RN BETWEEN 1 AND 3
+	</select>
+	 -->
+	
+	<select id="getViewCount" parameterType="hashMap" >
+	
+		
+		SELECT COUNT(*) 
+				FROM CALBOARD 
+				JOIN USER_INFO ON USER_INFO.USER_NO = CALBOARD.USER_NO
+				WHERE CALBOARD.USER_NO = #{user_no}
+				AND SUBSTR(CAL_MDATE,1 , 8) = #{cal_mdate}
+
+			
+	</select>
+	
+	
+	
+	
+	
+</mapper>

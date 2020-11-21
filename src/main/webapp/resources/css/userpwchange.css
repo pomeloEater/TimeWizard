@@ -1,0 +1,61 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap');
+
+:root {
+    --text-color: #f0f4f5;
+    --background-color: #263343;
+    --accent-color: #ff6b6b;
+    --point-color: #96DBE2;
+	--color: #E0E0E0;
+}
+
+body {
+	background-color: #263343;
+	font-family: 'Noto Sans KR';
+}
+
+.userpwchangebox {
+	width: 40%;
+	height: 60vh;
+	margin-left: 30%;
+	margin-top: 2rem;
+	background-color: white;
+	border-radius: 10px;
+}
+
+.middlebox {
+	padding: 60px;
+}
+
+.pwchangebox {
+	padding: 15px 0px 10px 0px;
+	text-align: center;
+}
+
+input[type=button] {
+	background-color: var(--background-color);
+	color: white;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: 0.4s;
+	border: 1px solid var(--background-color);
+}
+
+input[type=button]:hover {
+	background-color: white;
+	color: var(--background-color);
+}
+
+input[type=submit] {
+	background-color: var(--background-color);
+	color: white;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: 0.4s;
+	border: 1px solid var(--background-color);
+}
+
+input[type=submit]:hover {
+	background-color: white;
+	color: var(--background-color);
+}

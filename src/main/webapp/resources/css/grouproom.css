@@ -1,0 +1,123 @@
+:root {
+    --text-color: #f0f4f5;
+    --background-color: #263343;
+    --accent-color: #ff6b6b;
+    --point-color: #96DBE2;
+	--color: #E0E0E0;
+}
+
+input[type=button], button[type=button] {
+	background-color: var(--background-color);
+	color: white;
+	border-radius: 4px;
+	cursor: pointer;
+	float: right;
+	transition: 0.4s;
+}
+
+input[type=button]:hover, button[type=button]:hover {
+	background-color: white;
+	color: var(--background-color);
+}
+
+.contentsection {
+	float: left;
+	width: 85%;
+}
+
+.chat__area {
+	height: auto;
+}
+
+/* * * * * * * * * * *
+ *      buttons      *
+ * * * * * * * * * * */
+.buttons__area {
+    display: flex;
+}
+
+.buttons__div {
+	display: flex;
+}
+
+#button_right {
+	margin-left: 45%;
+}
+
+.buttons__div:first-child {
+    z-index: 10;
+}
+#enter-quit-button {
+	background-color: var(--background-color);
+	color: white;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: 0.4s;
+}
+#enter-quit-button:hover {
+	background-color: white;
+	color: var(--background-color);
+}
+
+.chattext__div {
+	display: flex;
+}
+
+.message_div {
+	display: flex;
+}
+
+input#message {
+	width: 30rem;
+	border: 1px transparent;
+}
+input#message:focus {
+    outline: none;
+}
+
+.buttons__div:last-child {
+	display: flex;
+}
+
+/* * * * * * * * * * *
+ *      chatting     *
+ * * * * * * * * * * */
+#textarea {
+	border-top: 1px solid var(--color);
+	width: 100%;
+	height: 25vh;
+	overflow: auto;
+}
+
+/* video와 modal은 group-rtc.css 파일에 */
+
+
+
+@media screen and (max-width: 1140px) {
+	.buttons__area {
+		width: 100%;
+	}
+
+	.chattext__div {
+		width: 50%;
+	}
+
+	.message_div {
+		width: 10%;
+	}
+
+	#message {
+	}
+
+	.buttons__div {
+	}
+
+	#button_right {
+		margin-left: 30%;
+	}
+
+}
+
+
+
+

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.minibean.timewizard.friend">
+  	
+	<!-- 나와 친구인 유저들 리스트 출력 -->
+	<!-- selectListF -->
+	<select id="selectListF" resultType="FriendDto" parameterType="int">
+		SELECT ui.USER_NO, ui.USER_ID ,ui.USER_NAME,
+			 ui.USER_PHOTO, ui.USER_ACTIVE, fl.STATUS, ui.USER_DISTINCT
+		FROM FRIEND_LIST fl JOIN USER_INFO ui ON ui.USER_NO = fl.USER_NO
+		WHERE fl.FRIEND_NO =(
+			SELECT ui.USER_NO
+			FROM USER_INFO ui
+			WHERE ui.USER_NO = #{user_no})
+			AND USER_ACTIVE != 'N'
+	</select>
+
+	<!-- 친구가 아닌 리스트 출력 -->
+	<!-- selectListN -->
+	<select id="selectListN" resultType="UserInfoDto">
+		SELECT ui.USER_NO, ui.USER_NAME, ui.USER_ROLE, ui.USER_DISTINCT
+		FROM USER_INFO ui
+		WHERE USER_NO != #{user_no}
+		AND USER_NO 
+		NOT IN(
+			SELECT fl.FRIEND_NO
+			FROM FRIEND_LIST fl
+			JOIN FRIEND_LIST fl2
+			ON fl.FRIEND_NO = fl2.USER_NO
+			AND fl.USER_NO = fl2.FRIEND_NO
+			WHERE fl.USER_NO = #{user_no})
+		AND USER_ACTIVE != 'N'
+	</select>
+	
+	<select id="searchList" resultType="UserInfoDto">
+	SELECT ui.USER_NO, fl.FRIEND_NO, ui.USER_ID ,ui.USER_NAME, ui.USER_ROLE,
+	ui.USER_PHOTO, ui.USER_ACTIVE, fl.STATUS, ui.USER_DISTINCT
+	FROM FRIEND_LIST fl JOIN USER_INFO ui ON ui.USER_NO = fl.USER_NO(+)
+	WHERE (LOWER(ui.USER_NAME) LIKE '%' || LOWER(#{user_name}) || '%')<!--이름이 포함된 -->
+	AND ui.USER_NO 
+	NOT LIKE(
+			SELECT USER_NO
+			FROM USER_INFO
+			WHERE USER_NO = #{user_no}
+			)
+	AND USER_ACTIVE != 'N'
+	
+	</select>
+	<select id="searchListN" resultType="UserInfoDto">
+	SELECT ui.USER_NAME, ui.USER_NO, ui.USER_ROLE, ui.USER_DISTINCT
+		FROM USER_INFO ui
+		WHERE USER_NO != #{user_no}
+		AND LOWER(ui.USER_NAME) LIKE '%' || LOWER(#{user_name}) || '%'
+		AND USER_ACTIVE != 'N'
+	</select>
+	
+	<!-- 친구 추가 -> 친구요청중 -> status:send -->
+	<!-- insert 2번 -->
+	<insert id="insert" parameterType="int">
+    {
+   CALL
+      DECLARE
+      BEGIN
+         INSERT INTO FRIEND_LIST
+         VALUES(#{friend_no}, #{user_no}, 'RESP');
+         
+         INSERT INTO FRIEND_LIST
+         VALUES(#{user_no}, #{friend_no}, 'SEND');
+   END
+   }
+	</insert>
+	
+	
+	<!-- 친구추가 -> 친구 요청 수락 -> status:accept -->
+	<!-- update 2번 -->
+	<update id="updateAccept" parameterType="FriendDto">
+		
+<!-- 		    {
+   CALL
+      DECLARE
+      BEGIN
+         UPDATE FRIEND_LIST
+		SET STATUS = 'ACCEPT'
+		WHERE 
+			(FRIEND_NO = #{friend_no} OR USER_NO = #{friend_no})
+		AND
+			(FRIEND_NO = #{user_no} OR USER_NO = #{user_no})
+		AND STATUS = 'SEND';
+         
+         UPDATE FRIEND_LIST
+		SET STATUS = 'ACCEPT'
+		WHERE 
+			(FRIEND_NO = #{user_no} OR USER_NO = #{user_no})
+		AND
+			(FRIEND_NO = #{friend_no} OR USER_NO = #{friend_no})
+		AND STATUS = 'SEND';
+   END
+   } -->
+         UPDATE FRIEND_LIST
+		SET STATUS = 'ACCEPT'
+		WHERE 
+			(FRIEND_NO = #{friend_no} AND USER_NO = #{user_no} AND STATUS = 'SEND')
+		OR
+			(FRIEND_NO = #{user_no} AND USER_NO = #{friend_no} AND STATUS = 'RESP')
+	</update>
+	
+	
+	<!-- 친구 거절 -> status:deny -->
+	<!-- update 2번 -->
+	<!-- delete  -->
+	<!-- update하고 바로 delete 한다. -->
+	<update id="updateDeny" parameterType="FriendDto">
+		UPDATE FRIEND_LIST
+		SET STATUS = 'DENY'
+		WHERE 
+			(FRIEND_NO = #{user_no} AND USER_NO = #{friend_no} AND STATUS = 'RESP')
+		OR
+			(FRIEND_NO = #{friend_no} AND USER_NO = #{user_no} AND STATUS = 'SEND')
+		
+	</update>
+	
+	<delete id="deleteDeny" parameterType="FriendDto">
+		DELETE FROM FRIEND_LIST
+		WHERE 
+			(FRIEND_NO = #{user_no} AND USER_NO = #{friend_no})
+		OR
+			(FRIEND_NO = #{friend_no} AND USER_NO = #{user_no})
+		AND 
+			STATUS = 'DENY'
+	</delete>
+	
+	
+	<!-- 친구 차단 -> status:block -->
+	<!-- update 2번 -->
+	<update id="updateBlock" parameterType="FriendDto">
+		UPDATE FRIEND_LIST
+		SET STATUS = 'BLOCK'
+		WHERE 
+			(FRIEND_NO = #{friend_no} OR USER_NO = #{friend_no})
+		AND
+			(FRIEND_NO = #{user_no} OR USER_NO = #{user_no})
+		AND STATUS = 'SEND'
+	</update>
+	
+	
+	<delete id="deleteFriend" parameterType="FriendDto">
+		DELETE FROM FRIEND_LIST
+		WHERE 
+			(FRIEND_NO = #{friend_no} OR USER_NO = #{friend_no})
+		AND
+			(FRIEND_NO = #{user_no} OR USER_NO = #{user_no})
+		AND STATUS = 'ACCEPT'
+	
+	</delete>
+	
+	
+</mapper>

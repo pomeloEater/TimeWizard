@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.minibean.timewizard.userinfo">
+
+	<select id="selectList" resultType="UserInfoDto">
+		SELECT USER_NO, USER_ID, USER_PW, USER_NAME, USER_EMAIL, 
+		USER_ROLE, USER_PHOTO, USER_ACTIVE, USER_DISTINCT, USER_REGDATE
+		FROM USER_INFO
+		ORDER BY USER_NO
+	</select>
+	
+	<select id="selectOneUserNo" parameterType="int" resultType="UserInfoDto">
+		SELECT USER_NO, USER_ID, USER_PW, USER_NAME, USER_EMAIL, 
+		USER_ROLE, USER_PHOTO, USER_ACTIVE, USER_DISTINCT, USER_REGDATE
+		FROM USER_INFO
+		WHERE USER_NO = #{user_no}
+	</select>
+	
+	<select id="selectOneUserInfoDto" parameterType="UserInfoDto" resultType="UserInfoDto">
+		SELECT ui.USER_NO, ui.USER_ID, ui.USER_PW, ui.USER_NAME, ui.USER_EMAIL, 
+			ui.USER_ROLE, ui.USER_PHOTO, ui.USER_ACTIVE, ui.USER_DISTINCT, ui.USER_REGDATE 
+		FROM USER_INFO ui 
+		WHERE USER_ID = #{user_id}
+		AND USER_PW = #{user_pw}
+		AND USER_ACTIVE = 'Y'
+	</select>
+	
+	<select id="selectOneUserDistinct" parameterType="String" resultType="UserInfoDto">
+		SELECT USER_NO, USER_ID, USER_PW, USER_NAME, USER_EMAIL, 
+		USER_ROLE, USER_PHOTO, USER_ACTIVE, USER_DISTINCT, USER_REGDATE
+		FROM USER_INFO
+		WHERE USER_DISTINCT = #{user_distinct}
+		AND USER_ACTIVE = 'Y'
+	</select>
+	
+	<insert id="insert" parameterType="UserInfoDto">
+		INSERT INTO USER_INFO
+		VALUES(USER_INFO_SEQ.NEXTVAL, #{user_id}, #{user_pw}, #{user_name},
+		#{user_email}, 'USER', NULL, 'Y', #{user_distinct}, SYSDATE)
+	</insert>
+	
+	<update id="update" parameterType="UserInfoDto">
+		UPDATE USER_INFO SET USER_NAME = #{user_name},
+		USER_EMAIL = #{user_email}, USER_DISTINCT = #{user_distinct}
+		WHERE USER_NO = #{user_no}
+	</update>
+	
+	<update id="delete" parameterType="int">
+		UPDATE USER_INFO SET USER_ACTIVE = 'N'
+		WHERE USER_NO = #{user_no}
+	</update>
+	
+	<select id="idCheck" parameterType="UserInfoDto" resultType="int">
+		SELECT COUNT(user_id)
+		FROM USER_INFO
+		WHERE USER_ID = #{user_id}
+	</select>
+
+	<update id="updateRoleRes" parameterType="UserInfoDto">
+		UPDATE USER_INFO
+		SET
+		<if test="user_role != null and user_role != ''">
+		USER_ROLE = #{user_role}
+		</if>
+		WHERE user_no = #{user_no}
+	</update>
+	
+	<update id="pwChangeRes" parameterType="UserInfoDto">
+		UPDATE USER_INFO SET USER_PW = #{user_newestpw}
+		WHERE USER_NO = #{user_no}
+	</update>
+	
+	<update id="userInfoChange" parameterType="UserInfoDto">
+		UPDATE USER_INFO SET USER_NAME = #{user_name},
+		USER_EMAIL = #{user_email}
+		WHERE USER_NO = #{user_no}
+	</update>
+	
+	<update id="profileChange" parameterType="UserInfoDto">
+		UPDATE USER_INFO SET USER_PHOTO = #{user_photo}
+		WHERE USER_NO = #{user_no}
+	</update>
+
+	<!-- id찾기 -->
+	<select id="findID" parameterType="String" resultType="UserInfoDto">
+		SELECT *
+		FROM USER_INFO
+		WHERE USER_EMAIL = #{user_email}
+	</select>
+	
+	<!-- password찾기 -->
+	<select id="findPW" parameterType="hashmap" resultType="UserInfoDto">
+		SELECT *
+		FROM USER_INFO
+		WHERE USER_ID = #{user_id}
+		AND USER_EMAIL = #{user_email}
+	</select>
+	
+</mapper>

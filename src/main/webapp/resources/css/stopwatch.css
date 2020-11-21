@@ -1,0 +1,26 @@
+	#stopwatch_box {
+		width: 100%;
+		background-color: #ff6b6b;
+		color: white;
+	}
+	
+	#stopwatch_time {
+		width: 100%;
+	}
+	
+	#time {
+		font-size: 40px;
+		text-align: center;
+		font-family: 'Electrolize';
+	}
+	
+	#stopwatch_menu {
+		width: 100%;
+		text-align: center;
+	}
+	
+	#stopwatch_menu a {
+		text-decoration: none;
+		font-size: 30px;
+		cursor: pointer;
+	}

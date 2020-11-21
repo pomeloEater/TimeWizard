@@ -1,0 +1,218 @@
+@charset "UTF-8";
+
+:root {
+    --text-color: #f0f4f5;
+    --background-color: #263343;
+	--accent-color: #ff6b6b;
+	--color: #E0E0E0;
+}
+
+div {
+}
+.todo__item {
+	display:flex;
+}
+.todo__insert {
+	text-align:center;
+}
+
+
+/* * * * * * * * * * *
+ *      category     *
+ * * * * * * * * * * */
+.todo__block{
+	
+}
+.todo__block:hover{
+	
+}
+.blaock__example {
+	background-color: chartreuse;
+	color: white;
+}
+.blaock__example:hover {
+	background-color: chartreuse;
+	color: white;
+}
+.block__basic{
+	background-color: coral;
+	color: white;
+}
+.block__basic:hover{
+	background-color: coral;
+	color: white;
+}
+.block__study{
+	background-color: gold;
+	color: white;
+}
+.block__health{
+	background-color: crimson;
+	color: white;
+}
+.block__life{
+	background-color: darkorange;
+	color: white;
+}
+.block__relax {
+	background-color: darkmagenta;
+	color: white;
+}
+.block__relation{
+	background-color: deeppink;
+	color: white;
+}
+.block__etc{
+	background-color:slateblue;
+	color: white;
+}
+.notselected {
+	background-color: white;
+}
+
+/* * * * * * * * * * *
+ *      hashtag      *
+ * * * * * * * * * * */
+.todo__editable {
+  border:1px solid #ddd;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.tag span[data-role="remove"] {
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.tag span[data-role="remove"]:after {
+  content: "x";
+  padding: 0px 2px;
+}
+
+.label-info{background-color:#5bc0de}
+.label-info[href]:focus,.label-info[href]:hover{background-color:#31b0d5}
+
+/* 모달창닫기 버튼이 있어서 따로 닫기아이콘 필요없음 */
+.modal__overlay {
+	display: none;
+}
+
+.button__times {
+	display: none;
+}
+
+.daily__part {
+	border: 1px solid red;
+}
+
+.list__area {
+	border: 1px solid blue;
+	height: 10vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 24px;
+}
+
+.date__area {
+	border: 1px solid green;
+	display: flex;
+}
+
+.date__status {
+	border: 1px solid yellow;
+	display: flex;
+}
+
+.date__change {
+}
+
+.date__month, .date__day {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+#todo__list {
+	display: flex;
+	margin-left: 10px;
+	cursor: pointer;
+}
+
+#todo_title {
+	width: 90%;
+	height: 2rem;
+	border: 1px solid var(--color);
+}
+
+.todo__textarea {
+	width: 90%;
+	resize: none;
+	border: 1px solid var(--color);
+}
+
+.todo__editable {
+	width: 90%;
+}
+
+.todo__block {
+	cursor: pointer;
+	margin-left: 4px;
+	border-radius: 4px;
+	border: 0;
+}
+
+#element_to_pop_up { 
+    background-color:#fff;
+    border-radius:15px;
+    color:#000;
+    display:none; 
+    padding:20px;
+    min-width: 30%;
+    min-height: 50vh;
+}
+
+.b-close{
+    cursor:pointer;
+    position:absolute;
+    right:10px;
+	top:5px;
+	font-size: 24px;
+}
+
+.todo__save, .button__accept {
+	cursor: pointer;
+	border: 0;
+	border-radius: 4px;
+	background-color: var(--background-color);
+	color: white;
+	float: right;
+}
+
+
+.modal__area div {
+	padding: 8px;
+}
+
+
+
+@media screen and (max-width: 1140px) {
+	#element_to_pop_up { 
+		min-width: 80%;
+		min-height: 60vh;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

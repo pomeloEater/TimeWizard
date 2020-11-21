@@ -1,0 +1,106 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap');
+
+:root {
+    --text-color: #f0f4f5;
+    --background-color: #263343;
+	--accent-color: #ff6b6b;
+	--color: #E0E0E0;
+}
+
+@font-face {
+	font-family: 'Victoire';
+	src: url('/timewizard/font/Victoire.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.navbar {
+	/* font-family: 'Staatliches'; */
+	font-family: 'Victoire', 'Noto Sans KR';
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--background-color);
+    padding: 0px 12px;
+}
+
+.navbar a {
+	color: var(--text-color);
+}
+
+.nav_logo {
+    font-size: 2.5rem;
+    color: var(--text-color);
+    display: flex;
+}
+
+.logo_svg {
+    position: relative;
+	width: 2rem;
+	height: 2rem;
+	float: left;
+}
+.logo_text {
+	float: right;
+	position: absolute;
+	top: 0.2rem;
+}
+
+.nav_logo img{
+	position:absolute;
+	width: 2rem;
+	height: 2rem;
+	transition: all 1s ease-in-out;
+}
+
+.nav_logo img.accent{
+	opacity:0;
+}
+
+.nav_logo:hover img.text{
+	opacity:0;	
+}
+.nav_logo:hover img.accent{
+	opacity:1;	
+}
+
+.nav_menu {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+}
+
+.nav_menu li {
+    padding: 0px 12px;
+}
+
+.nav_menu li:hover {
+    background-color: var(--accent-color);
+    border-radius: 4px;
+}
+
+.nav_icon {
+    list-style: none;
+    color: var(--text-color);
+    display: flex;
+    padding-left: 0;	
+}
+
+.nav_icon li {
+    padding: 0px 12px;
+}
+
+.nav_icon li:hover {
+	background-color: var(--accent-color);
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.nav_toggle {
+    display: none;
+    position: absolute;
+    right: 25px;
+    font-size: 24px;
+    color: var(--accent-color);
+}

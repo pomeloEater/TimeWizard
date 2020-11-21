@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.minibean.timewizard.fileupload">
+	<select id="selectVideoList" parameterType="int" resultType="FileUploadDto">
+		SELECT FILE_NO, USER_NO, FILE_NAME, FILE_TYPE, FILE_REGDATE
+		FROM FILE_UPLOAD
+		WHERE USER_NO = #{user_no}
+		AND FILE_TYPE = 'V'
+		AND FILE_REGDATE >= TO_DATE(TO_CHAR((SYSDATE-6),'YYYYMMDD'),'YYYYMMDD')
+		ORDER BY FILE_NO DESC
+		<!-- SYSDATE - 6? SYSDATE - 7? -->
+	</select>
+	<select id="selectImageOne" parameterType="int" resultType="FileUploadDto">
+		SELECT FILE_NO, USER_NO, FILE_NAME, FILE_TYPE, FILE_REGDATE
+		FROM (SELECT FILE_NO, USER_NO, FILE_NAME, FILE_TYPE, FILE_REGDATE
+			FROM FILE_UPLOAD
+			WHERE USER_NO = #{user_no}
+			AND FILE_TYPE = 'I'
+			ORDER BY FILE_NO DESC)
+		WHERE ROWNUM = 1
+	</select>
+	<select id="selectVideoOne" parameterType="int" resultType="FileUploadDto">
+		SELECT FILE_NO, USER_NO, FILE_NAME, FILE_TYPE, FILE_REGDATE
+		FROM FILE_UPLOAD
+		WHERE FILE_NO = #{file_no}
+		AND FILE_TYPE = 'V'
+	</select>
+	<select id="selectOne" parameterType="int" resultType="FileUploadDto">
+
+		SELECT FILE_NO, USER_NO, FILE_NAME, FILE_TYPE, FILE_REGDATE
+		FROM FILE_UPLOAD
+		WHERE FILE_NO = #{file_no}
+	</select>
+	
+	<insert id="insert" parameterType="FileUploadDto">
+		INSERT INTO FILE_UPLOAD
+		VALUES(FILE_UPLOAD_SEQ.NEXTVAL, #{user_no}, #{file_name}, #{file_type}, SYSDATE)
+	</insert>
+</mapper>

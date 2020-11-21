@@ -1,0 +1,83 @@
+:root {
+    --text-color: #f0f4f5;
+    --background-color: #263343;
+    --accent-color: #ff6b6b;
+    --point-color: #96DBE2;
+    --color: #E0E0E0;
+}
+
+input[type=button] {
+    background-color: var(--background-color);
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+    transition: 0.4s;
+}
+
+input[type=button]:hover {
+    background-color: white;
+    color: var(--background-color);
+}
+
+.accdeny {
+    background-color: var(--background-color);
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+    transition: 0.4s;
+    font-size: 7pt;
+}
+
+.accdeny:hover {
+    background-color: white;
+    color: var(--background-color);
+}
+
+.searchbtn {
+    background-color: var(--background-color);
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+    transition: 0.4s;
+    margin: 2px;
+}
+
+.searchbtn:hover {
+    background-color: white;
+    color: var(--background-color);
+}
+
+p>a {
+    color: black;
+}
+
+p>a:active {
+    color: skyblue;
+}
+
+.userlist {
+    margin-left: 2px;
+    margin-right: 2px;
+    font-size: 10pt;
+}
+
+.friendlist {
+    font-size: 10pt;
+}
+
+p {
+    color: black;
+}
+
+#search_text {
+    margin: 2px;
+}
+
+@media screen and (max-width: 1140px) {
+    .friendsbar {
+        margin-top: 0vh;
+    }
+}

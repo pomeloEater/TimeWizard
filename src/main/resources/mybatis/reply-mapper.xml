@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="reply-mapper">
+
+	<select id="replyList" resultType="ReplyDto">
+		SELECT USER_INFO.USER_NAME, USER_INFO.USER_ID, REPLY_NO, NOTICE_NO, REPLY_CONTENT, BOARD_REPLY.USER_NO,REPLY_REGDATE
+		FROM BOARD_REPLY 
+		JOIN USER_INFO ON BOARD_REPLY.USER_NO = USER_INFO.USER_NO
+		WHERE NOTICE_NO= #{notice_no}
+		ORDER BY REPLY_NO ASC
+	
+	</select>
+	
+	<insert id="insertReply" parameterType="ReplyDto">
+		INSERT INTO BOARD_REPLY	
+		VALUES(BOARD_REPLY_SEQ.NEXTVAL, #{notice_no}, #{user_no}, #{reply_content}, SYSDATE)
+		
+	</insert>
+		
+	<update id="updateReply" parameterType="ReplyDto">
+		UPDATE BOARD_REPLY SET
+			REPLY_CONTENT = #{reply_content}, REPLY_REGDATE = SYSDATE
+			WHERE 
+				REPLY_NO = #{reply_no}
+	</update>
+	
+	<delete id="deleteReply" parameterType="int">
+		DELETE FROM BOARD_REPLY
+		WHERE 
+			REPLY_NO = #{reply_no}
+	</delete>
+	
+	
+</mapper>

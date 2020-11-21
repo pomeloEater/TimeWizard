@@ -1,0 +1,185 @@
+:root {
+    --text-color: #f0f4f5;
+    --background-color: #263343;
+	--accent-color: #ff6b6b;
+	--color: #E0E0E0;
+}
+
+h1 {
+	margin-left: 1.5rem;
+}
+
+body{
+
+	font-family: 'Helvetica Neue', sans-serif
+}
+
+.mainsection {
+	height: 100vh;
+}
+
+.top {
+	display: flex;
+	justify-content: space-between;
+}
+
+.home {
+	font-size: 24px;
+	padding: 20px 12px 0px 0px;
+}
+
+.update {
+	cursor: pointer;
+}
+
+#title {
+	border-bottom: 1px solid black;
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 5vh;
+}
+
+#content {
+	border-bottom: 1px solid black;
+	width: 80%;
+	height: 300px;
+	margin-left: 10%
+}
+
+#comment_state {
+	width: 70%;
+	margin-left: 15%;
+	margin-bottom: 10px;
+}
+
+#comment_total {
+	float: left;
+}
+
+#comment_toggle {
+	float: right;
+	cursor: pointer;
+}
+
+#commentlist_box {
+	width: 70%;
+	height: 150px;
+	border: 1px solid black;
+	margin-left: 15%;
+}
+
+#comment {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#comment_box {
+	width: 70%;
+	height: 30px;
+	border: 1px solid black;
+	display: flex;
+}
+
+#comment_text {
+	font-size: 16px;
+	width: 85%;
+	padding: 6px;
+	border: 0px;
+	display: flex;
+}
+
+#comment_button {
+	width: 15%;
+	height: 100%;
+	background: black;
+	color: white;
+	cursor: pointer;
+	display: flex;
+	font-size: 20px;
+	justify-content: center;
+	align-items: center;
+}
+
+.imgOn {
+	display: none;
+}
+
+.backbtn {
+	display: flex;
+	border: 1px solid var(--color);
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	right: 2rem;
+	bottom: 10vh;
+	cursor: pointer;
+}
+
+@media screen and (max-width: 1140px) {
+	.mainsection {
+		height: 120vh;
+	}
+	
+	#title {
+		border-bottom: 1px solid black;
+		width: 90%;
+		margin-left: 5%;
+	}
+	#content {
+		border-bottom: 1px solid black;
+		width: 90%;
+		margin-left: 5%;
+	}
+	#commentlist_box {
+		width: 90%;
+		margin-left: 5%;
+	}
+	.imgOn {
+		display: block;
+	}
+	.textOn {
+		display: none;
+	}
+	.form-control {
+		border: none;
+		margin: 2% 10% 5% 1%;
+		color: navy;
+		width: 70%;
+		height: 100%;
+		background-color: rice;
+		border-radius: 13px 13px 13px 13px;
+		box-shadow: 5px 3px 10px rgba(0, 0, 0, 0.29);
+	}
+	.switch-button:focus, .control-button:focus {
+		outline: none;
+	}
+	
+	/* 댓글 관련  */
+	
+	:root{
+	--right-color: #96dbe2;
+	}
+	
+	#insertReplyBtn{
+		
+		background-color: var(--right-color);
+		cursor: pointer;
+    	display: FELX;
+   	 	margin-left: auto;
+    	margin-right: auto;
+    	width: 140px;
+    	height: 40px;
+    	font-size: 14px;
+    	text-transform: uppercase;
+    	color : white;
+	    border-radius: 20px;
+	    border :0px;
+	   
+	    
+	}
+}

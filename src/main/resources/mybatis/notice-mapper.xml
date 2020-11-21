@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.minibean.timewizard.notice">
+
+ 	<!-- 총 게시글 갯수 출력 -->
+	<select id="countNotice" resultType="int">
+		SELECT COUNT(*)
+		FROM BOARD_NOTICE
+	</select>
+	
+	<!-- 갯수 출력 title -->
+	<select id="searchcountTitle" resultType="int" parameterType="String">
+		SELECT COUNT(*)
+		FROM (
+			SELECT *
+			FROM BOARD_NOTICE
+			WHERE NOTICE_TITLE LIKE '%'||#{nt_title}||'%')
+	</select>
+	
+	<!-- 갯수 출력 content -->
+	<select id="searchcountContent" resultType="int" parameterType="String">
+		SELECT COUNT(*)
+		FROM (
+			SELECT *
+			FROM BOARD_NOTICE
+			WHERE NOTICE_CONTENT LIKE '%'||#{nt_content}||'%')
+	</select>
+	
+	<!-- title로 search 후 페이징 -->
+	<select id="selectSearchTitle" parameterType="hashMap" resultType="NoticeDto">
+		SELECT *
+		FROM(
+			SELECT ROWNUM RN, A.*
+			FROM (
+					SELECT *
+					FROM BOARD_NOTICE
+					WHERE NOTICE_TITLE LIKE '%'||#{nt_title}||'%'
+					ORDER BY NOTICE_NO DESC
+				)A
+			)
+		WHERE RN BETWEEN #{pagingdto.start} AND #{pagingdto.end}
+	</select>
+	
+	<!-- content로 search 후 페이징 -->
+	 <select id="selectSearchContent" parameterType="hashMap" resultType="NoticeDto">
+	 	SELECT *
+		FROM(
+			SELECT ROWNUM RN, A.*
+			FROM (
+					SELECT *
+					FROM BOARD_NOTICE
+					WHERE NOTICE_CONTENT LIKE '%'||#{nt_content}||'%'
+					ORDER BY NOTICE_NO DESC
+				)A
+			)
+		WHERE RN BETWEEN #{pagingdto.start} AND #{pagingdto.end}
+	 </select>
+	 
+	<!-- 페이징과 리스트 출력 -->
+	<select id="selectList" parameterType="com.minibean.timewizard.model.dto.PagingDto" resultType="NoticeDto">
+		SELECT *
+		FROM(
+			SELECT ROWNUM RN, NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_REGDATE
+			FROM(
+				SELECT NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_REGDATE
+				FROM BOARD_NOTICE
+				ORDER BY NOTICE_NO DESC
+				)A
+			)
+		WHERE RN BETWEEN #{start} AND #{end}
+	</select>
+	
+	<insert id="insert" parameterType="NoticeDto">
+		INSERT INTO BOARD_NOTICE
+		VALUES(BOARD_NOTICE_SEQ.NEXTVAL, #{notice_title}, #{notice_content}, SYSDATE)
+	</insert>
+	
+	<select id="selectOne" parameterType="int" resultType="NoticeDto" >
+  	 	SELECT NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_REGDATE
+  		FROM BOARD_NOTICE
+   		WHERE NOTICE_NO = #{notice_no}
+	</select>
+	
+	<update id="update" parameterType="NoticeDto">
+		UPDATE BOARD_NOTICE
+      	SET NOTICE_TITLE = #{notice_title}, NOTICE_CONTENT = #{notice_content}
+     	WHERE NOTICE_NO = #{notice_no}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM BOARD_NOTICE
+		WHERE NOTICE_NO = #{notice_no}
+	</delete>
+	
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

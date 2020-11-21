@@ -1,0 +1,90 @@
+@charset "UTF-8";
+:root {
+    --text-color: #f0f4f5;
+    --background-color: #263343;
+    --accent-color: #ff6b6b;
+    --color: #E0E0E0;
+
+    --light-color: whitesmoke;
+    --dark-color: #363636;
+    --primary-color: #00d1b2;
+    --primary-light-color: #ebfffc;
+    --primary-dark-color: #00947e;
+    --link-color: #3273dc;
+    --link-light-color: #eef3fc;
+    --link-dark-color: #2160c4;
+    --info-color: #3298dc;
+    --info-light-color: #eef6fc;
+    --info-dark-color: #1d72aa;
+    --success-color: #48c774;
+    --success-light-color: #effaf3;
+    --success-dark-color: #257942;
+    --warning-color: #ffdd57;
+    --warning-light-color: #fffbeb;
+    --warning-dark-color: #947600;
+    --danger-color: #f14668;
+    --danger-light-color: #feecf0;
+    --danger-dark-color: #cc0f35;
+}
+
+
+.modal__overlay {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 100;
+    overflow: hidden;
+    position: fixed;
+    opacity: .8;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--dark-color);
+    padding: 0;
+}
+
+.modal__delete {
+    border-radius: 1rem;
+    background-color: #FFF;
+    padding: 15px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+    max-width: 500px;
+    width: 100%;
+    margin: auto;
+    position: fixed;
+    z-index: 110;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-80%);
+    -webkit-transform: translateY(-80%);
+    -moz-transform: translateY(-80%);
+}
+
+input[type=text],
+input[type=password] {
+    background-color: white;
+    border-color: white;
+    border-radius: 4px;
+    color: #363636;
+    /* box-shadow: inset 0 0.0625em 0.125em rgba(10, 10, 10, 0.05); */
+}
+
+input[type=text]:focus,
+input[type=password]:focus {
+    border-color: #3273dc;
+    box-shadow: 0 0 0 0.125em rgba(50, 115, 220, 0.25);
+}
+
+.deletebox:not(:last-child) {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+label.control-label {
+    font-weight: bold;
+}

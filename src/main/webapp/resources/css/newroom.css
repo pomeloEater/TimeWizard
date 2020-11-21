@@ -1,0 +1,82 @@
+:root {
+    --text-color: #f0f4f5;
+    --background-color: #263343;
+    --accent-color: #ff6b6b;
+    --point-color: #96DBE2;
+	--color: #E0E0E0;
+}
+
+body {
+	font-family: 'Nanum Gothic Coding';
+	background-color: var(--background-color);
+	margin: 0;
+}
+
+form {
+	width: 40%;
+	height: 70vh;
+	background-color: white;
+	border-radius: 10px;
+	margin-left: 30%;
+	margin-top: 10vh;
+}
+
+#box {
+	padding-top: 10vh;
+}
+
+.createbox {
+	display: flex;
+	justify-content: center;
+	padding: 20px;
+	font-size: 30px;
+}
+
+.createtitle {
+	width: 15rem;
+}
+.createpublic {
+	width: 22.5rem;
+}
+.createclient{
+	width: 22rem;
+}
+
+button {
+	background-color: var(--point-color);
+	color: white;
+	border-radius: 4px;
+	border: 1px solid var(--color);
+	width: 25%;
+	cursor: pointer;
+	padding: 4px;
+	margin-left: 10px;
+	margin-right: 10px;
+	transition: 0.4s;
+}
+
+button:hover {
+	background-color: white;
+	color: var(--background-color);
+}
+
+
+@media screen and (max-width: 1140px) {
+	form {
+		width: 90%;
+		margin-left: 5%;
+	}
+
+	.createbox {
+		font-size: 20px;
+	}
+}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
+<configuration>
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL"/>
+	</settings>
+	<typeAliases>
+		<typeAlias type="com.minibean.timewizard.model.dto.UserInfoDto" alias="UserInfoDto"/>
+		<typeAlias type="com.minibean.timewizard.model.dto.ChatDto" alias="ChatDto"/>
+		<typeAlias type="com.minibean.timewizard.model.dto.GroupDto" alias="GroupDto"/>
+		<typeAlias type="com.minibean.timewizard.model.dto.UserTodoDto" alias="TodoDto"/>
+		<typeAlias type="com.minibean.timewizard.model.dto.StopwatchDto" alias="StopwatchDto"/>
+		<typeAlias type="com.minibean.timewizard.model.dto.NoticeDto" alias="NoticeDto"/>
+		<typeAlias type="com.minibean.timewizard.model.dto.FriendDto" alias="FriendDto"/>
+		<typeAlias type="com.minibean.timewizard.model.dto.ReplyDto" alias="ReplyDto"/>
+		<typeAlias type="com.minibean.timewizard.model.dto.WeeklyDto" alias="WeeklyDto"/>
+		<typeAlias type="com.minibean.timewizard.model.dto.PayDto" alias="PayDto"/>
+		<typeAlias type="com.minibean.timewizard.model.dto.FileUploadDto" alias="FileUploadDto"/>
+		<typeAlias type="com.minibean.timewizard.model.dto.CalendarDto" alias="CalendarDto"/>
+	</typeAliases>
+	<mappers>
+		<mapper resource="/mybatis/user_info-mapper.xml" />
+		<mapper resource="/mybatis/chat-mapper.xml"/>
+		<mapper resource="/mybatis/group-mapper.xml"/>
+		<mapper resource="/mybatis/user_todo-mapper.xml"/>
+		<mapper resource="/mybatis/stopwatch-mapper.xml"/>
+		<mapper resource="/mybatis/notice-mapper.xml"/>
+		<mapper resource="/mybatis/friend-mapper.xml"/>
+		<mapper resource="/mybatis/reply-mapper.xml"/>
+		<mapper resource="/mybatis/pay-mapper.xml"/>
+		<mapper resource="/mybatis/file_upload-mapper.xml"/>
+		<mapper resource="/mybatis/calboard-mapper.xml"/>
+		
+		
+	</mappers>
+</configuration>

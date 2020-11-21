@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="group-mapper">
+  <select id="selectList" resultType="GroupDto">
+  	SELECT *
+  	FROM GROUP_INFO
+  	ORDER BY GROUP_NO
+  </select>
+  <select id="selectOne" resultType="GroupDto">
+  	SELECT *
+  	FROM GROUP_INFO WHERE GROUP_TITLE = #{group_title}
+  </select>
+    <select id="searchList" resultType="GroupDto">
+  	SELECT *
+  	FROM GROUP_INFO  
+  	WHERE (LOWER(GROUP_TITLE) LIKE '%' ||  LOWER(#{group_title}) || '%' )
+  	OR (LOWER(USER_ID) LIKE '%' ||  LOWER(#{group_title}) || '%')
+  	OR (LOWER(USER_NAME) LIKE '%' ||  LOWER(#{group_title}) || '%')
+  	ORDER BY GROUP_NO <!-- 번호를 기준으로 삼아 순차대로 정렬 -->
+  </select>
+   <select id="clientnum" resultType="GroupDto">
+  	SELECT *
+  	FROM GROUP_INFO WHERE GROUP_TITLE = #{group_title}
+  </select>
+ <!--  <select id="selectOne" resultType="ChatDto">
+  	SELECT CHAT_NO, USER_ID
+  	FROM CHAT WHERE NAME = #{user_id}
+  </select> -->
+  <insert id="insert">
+  	INSERT INTO GROUP_INFO VALUES
+  	(GROUP_INFO_SEQ.NEXTVAL,#{user_id}, #{user_name}, #{group_title}, #{group_content}, 
+  	#{group_public},SYSDATE,<!--${group_hashtag}  -->#{group_title}, #{group_su},
+  	0, #{group_pw},'N')
+  </insert>
+  <update id="clientplus">
+  	UPDATE GROUP_INFO SET GROUP_CLIENT = GROUP_CLIENT+1
+  	WHERE GROUP_TITLE = #{group_title}
+  </update>
+  <update id="clientminus">
+  	UPDATE GROUP_INFO SET GROUP_CLIENT = GROUP_CLIENT-1
+  	WHERE GROUP_TITLE = #{group_title}
+  	AND GROUP_CLIENT > 0
+  </update>
+  <delete id="deleteroom">
+  	DELETE FROM GROUP_INFO
+  	WHERE GROUP_TITLE = #{group_title}
+  </delete>
+</mapper>
