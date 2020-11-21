@@ -10,6 +10,8 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -54,6 +56,9 @@ public class LoginController {
 		this.loginGoogleVO = loginGoogleVO;
 	}
 	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
+	
 	
 	/* 기본 로그인창 */
 	@RequestMapping(value="/loginform", method= {RequestMethod.GET, RequestMethod.POST})
@@ -79,11 +84,16 @@ public class LoginController {
 		
 		UserInfoDto res = userInfoBiz.selectOne(dto);
 		boolean check = false;
+		
 		if (res != null) {
-			// 로그인 값을 계속 가지고 있는 Session
-//			logger.info("user role : " + res.getUser_role());
-			session.setAttribute("login", res);
-			check = true;
+			if(passwordEncoder.matches(dto.getUser_pw(), res.getUser_pw())) {
+				logger.info("사용자가 입력한 pw : "+dto.getUser_pw());
+				logger.info("암호화된 pw : "+res.getUser_pw());
+				
+				// 로그인 값을 계속 가지고 있는 Session
+				session.setAttribute("login", res);
+				check = true;
+			}	
 		}
 		
 		Map<String, Boolean> map = new HashMap<String, Boolean>();
@@ -219,7 +229,10 @@ public class LoginController {
 	public String signupResult(UserInfoDto dto) {
 		logger.info(">> [CONTROLLER-USERINFO] signup");
 		
+		dto.setUser_pw(passwordEncoder.encode(dto.getUser_pw()));
+		logger.info("암호화됨 pw : "+dto.getUser_pw());
 		int res = userInfoBiz.insert(dto);
+		
 		UserInfoDto inserted = userInfoBiz.selectOne(dto);
 		int insertPay = paybiz.insertPay(new PayDto(inserted.getUser_no(),"N",0));
 		if ((res + insertPay)==2) {
