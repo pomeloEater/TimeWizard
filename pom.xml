@@ -54,14 +54,14 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>2.11.3</version>
 		</dependency>
-		
+
 		<!-- MESSAGING -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-messaging</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-		
+
 
 		<!-- Logging -->
 		<dependency>
@@ -254,13 +254,38 @@
 			<artifactId>commons-fileupload</artifactId>
 			<version>1.4</version>
 		</dependency>
-		
+
 		<!-- html2canvas -->
 		<dependency>
-		    <groupId>org.webjars.npm</groupId>
-		    <artifactId>html2canvas</artifactId>
-		    <version>0.5.0-beta4</version>
+			<groupId>org.webjars.npm</groupId>
+			<artifactId>html2canvas</artifactId>
+			<version>0.5.0-beta4</version>
 		</dependency>
+
+		<!-- 비밀번호 암호화 -->
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>5.3.5.RELEASE</version>
+		</dependency>
+
+		<!-- 비밀번호 암호화 -->
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>5.3.5.RELEASE</version>
+		</dependency>
+
+		<!-- 비밀번호 암호화 -->
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>5.3.5.RELEASE</version>
+		</dependency>
+
 
 	</dependencies>
 	<build>

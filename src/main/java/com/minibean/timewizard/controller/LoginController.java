@@ -10,6 +10,8 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -53,6 +55,9 @@ public class LoginController {
 	private void setLoginGoogleVO(LoginGoogleVO loginGoogleVO) {
 		this.loginGoogleVO = loginGoogleVO;
 	}
+	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 	
 	
 	/* 기본 로그인창 */
@@ -219,7 +224,10 @@ public class LoginController {
 	public String signupResult(UserInfoDto dto) {
 		logger.info(">> [CONTROLLER-USERINFO] signup");
 		
+		dto.setUser_pw(passwordEncoder.encode(dto.getUser_pw()));
+		logger.info("암호화됨 pw : "+dto.getUser_pw());
 		int res = userInfoBiz.insert(dto);
+		
 		UserInfoDto inserted = userInfoBiz.selectOne(dto);
 		int insertPay = paybiz.insertPay(new PayDto(inserted.getUser_no(),"N",0));
 		if ((res + insertPay)==2) {
