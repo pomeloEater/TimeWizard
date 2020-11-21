@@ -21,7 +21,6 @@
 			ui.USER_ROLE, ui.USER_PHOTO, ui.USER_ACTIVE, ui.USER_DISTINCT, ui.USER_REGDATE 
 		FROM USER_INFO ui 
 		WHERE USER_ID = #{user_id}
-		AND USER_PW = #{user_pw}
 		AND USER_ACTIVE = 'Y'
 	</select>
 	

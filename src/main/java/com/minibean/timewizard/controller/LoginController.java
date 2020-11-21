@@ -84,11 +84,16 @@ public class LoginController {
 		
 		UserInfoDto res = userInfoBiz.selectOne(dto);
 		boolean check = false;
+		
 		if (res != null) {
-			// 로그인 값을 계속 가지고 있는 Session
-//			logger.info("user role : " + res.getUser_role());
-			session.setAttribute("login", res);
-			check = true;
+			if(passwordEncoder.matches(dto.getUser_pw(), res.getUser_pw())) {
+				logger.info("사용자가 입력한 pw : "+dto.getUser_pw());
+				logger.info("암호화된 pw : "+res.getUser_pw());
+				
+				// 로그인 값을 계속 가지고 있는 Session
+				session.setAttribute("login", res);
+				check = true;
+			}	
 		}
 		
 		Map<String, Boolean> map = new HashMap<String, Boolean>();
