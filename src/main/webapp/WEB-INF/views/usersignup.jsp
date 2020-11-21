@@ -271,6 +271,7 @@ $(document).ready(function() {
 			$(".name_text").text("이름을 입력해주세요.").css("color","red");
 			$(".control_button_in").attr("disabled", true);
 		}else{
+			${".name_text"}.text();
 			$(".control_button_in").attr("disabled", false);
 		}
 	});

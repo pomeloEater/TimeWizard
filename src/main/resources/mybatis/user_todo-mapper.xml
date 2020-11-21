@@ -46,6 +46,12 @@
 	  	TODO_STARTTIME = #{todo_starttime}, TODO_ENDTIME = #{todo_endtime}
 	  	WHERE TODO_NO = #{todo_no}
 	</update>
+	<update id="updateTime" parameterType="TodoDto">
+		UPDATE USER_TODO SET TODO_COMPLETE = #{todo_complete},
+		TODO_STARTTIME = #{todo_starttime}, TODO_ENDTIME = #{todo_endtime},
+		TODO_DATE = #{todo_date}
+		WHERE TODO_NO = #{todo_no}
+	</update>
 	<delete id="delete" parameterType="int">
 	  	DELETE FROM USER_TODO
 	  	WHERE TODO_NO = #{todo_no}
