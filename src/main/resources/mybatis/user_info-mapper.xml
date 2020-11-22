@@ -105,4 +105,11 @@
 		AND USER_EMAIL = #{user_email}
 	</select>
 	
+	<!-- 비번암호화한 후 - 마이페이지에서 암호변경할때 기본비밀번호 확인 -->
+	<update id="pwChange">
+		UPDATE USER_INFO
+		SET USER_PW = #{}
+		WHERE USER_PW = #{}
+	</update>
+	
 </mapper>

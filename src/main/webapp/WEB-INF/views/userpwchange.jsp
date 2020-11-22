@@ -11,6 +11,7 @@
 <title>TimeWizard</title>
 <link href="/timewizard/css/actionpage.css" rel="stylesheet">
 <link href="/timewizard/css/userpwchange.css" rel="stylesheet">
+<script type="text/javascript" src="/timewizard/js/userpwchange.js"></script>
 <script src="https://kit.fontawesome.com/3049a69bf8.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -30,26 +31,28 @@
 				</div>
 				<div class="pwchangebox">
 					<label class="control-label" for="userPass">패스워드 : </label>
-					<input class="form-control" type="password" id="user_pw" name="user_pw" /><br/>
+					<input class="form-control" type="password" id="user_pw" name="user_pw" />
+					<i id="icon" class="fas fa-exclamation-triangle"></i>
 				</div>
-				<div class="pwchangebox">
-					<label class="control-label" for="newestPass">새 비밀번호(6~10자리) : </label>
-					<input class="form-control" type="password" id="user_newestpw" name="user_newestpw" minlength="6" maxlength="10" /><br/>
+				<div class="toggle">
+					<div class="pwchangebox">
+						<label class="control-label" for="newestPass">새 비밀번호(6~10자리) : </label>
+						<input class="form-control" type="password" id="user_newestpw" name="user_newestpw" required="required"/><br/>
+					</div>
+					<div class="pwchangebox">
+						<label class="control-label" for="newestPassConfirm">새 비밀번호 확인 : </label>
+						<input class="form-control" type="password" id="user_newestpw_check" name="user_newestpw_check" required="required"/><br/>
+					</div>
+					<div class="pwchangebox">
+						<input id="disbtn" class="btn" type="submit" value="변경하기 " />
+						<input type="button" onclick="location.href='mypage'" value="취소" />
+					</div>
+					<div>
+						<c:if test="${msg == false}">
+							비밀번호가 맞지 않습니다.
+						</c:if>
+					</div>
 				</div>
-				<div class="pwchangebox">
-					<label class="control-label" for="newestPassConfirm">새 비밀번호 확인 : </label>
-					<input class="form-control" type="password" id="user_newestpw_check" name="user_newestpw_check" /><br/>
-				</div>
-				<div class="pwchangebox">
-					<br/>비밀번호를 변경하시겠습니까?<br/><br/>
-					<input id="disbtn" class="btn" type="submit" value="변경하기 " />
-					<input type="button" onclick="location.href='mypage'" value="취소" />
-				</div>
-			<div>
-				<c:if test="${msg == false}">
-					비밀번호가 맞지 않습니다.
-				</c:if>
-			</div>
 			</form>
 		</div>
 	</div>
