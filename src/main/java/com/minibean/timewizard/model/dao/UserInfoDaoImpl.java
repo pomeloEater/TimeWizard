@@ -231,4 +231,17 @@ public class UserInfoDaoImpl implements UserInfoDao {
 		return result;
 	}
 
+	@Override
+	public UserInfoDto CheckPW(int user_no) {
+		logger.info(">> [UserINFO] checkpw : user_no : "+user_no);
+		UserInfoDto result = null;
+		try {
+			result = sqlSession.selectOne(NAMESPACE+"checkPW", user_no);
+		} catch (Exception e) {
+			logger.info("[ERROR] checkPw");
+			e.printStackTrace();
+		}
+		return result;
+	}
+
 }

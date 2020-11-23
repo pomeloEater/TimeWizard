@@ -29,4 +29,5 @@ public interface UserInfoDao {
 	//비밀번호 찾기
 	public UserInfoDto findPW(HashMap<String, Object> map);
 	
+	public UserInfoDto CheckPW(int user_no);
 }

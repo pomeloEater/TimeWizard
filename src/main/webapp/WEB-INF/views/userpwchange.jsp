@@ -12,7 +12,40 @@
 <link href="/timewizard/css/actionpage.css" rel="stylesheet">
 <link href="/timewizard/css/userpwchange.css" rel="stylesheet">
 <script type="text/javascript" src="/timewizard/js/userpwchange.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://kit.fontawesome.com/3049a69bf8.js" crossorigin="anonymous"></script>
+<script>
+
+$(document).ready(function(){
+	let user_no = ${login.user_no};
+	let user_pw = $("#user_pw").val();
+	var pwVal = {
+			"user_pw":user_pw
+	}
+	$('#user_pw').blur(function(){
+		console.log("user_no6567586: "+user_no);
+		$.ajax({
+			type: "post",
+			url: "/timewizard/checkpw?user_no="+user_no,
+			data: JSON.stringify(pwVal),
+			success: function(data){
+				console.log(data);
+				if(data.check == true){
+					console.log("data.check : "+data.check);
+					
+				}else{
+					alert("비밀번호가 틀렸습니다. 다시 입력해주세요!");
+					$("#user_pw").focus();
+				}
+			},
+			error: function(data){
+				alert("통신실패ㅜㅠㅠ");
+			}
+		});
+	})
+});
+
+</script>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>

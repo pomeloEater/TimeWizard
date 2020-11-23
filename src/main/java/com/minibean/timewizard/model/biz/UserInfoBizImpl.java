@@ -104,4 +104,9 @@ public class UserInfoBizImpl implements UserInfoBiz {
 		return userInfoDao.login(dto);
 	}
 
+	@Override
+	public UserInfoDto CheckPW(int user_no) {
+		return userInfoDao.CheckPW(user_no);
+	}
+
 }

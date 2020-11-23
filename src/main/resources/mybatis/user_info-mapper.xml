@@ -106,10 +106,11 @@
 	</select>
 	
 	<!-- 비번암호화한 후 - 마이페이지에서 암호변경할때 기본비밀번호 확인 -->
-	<update id="pwChange">
-		UPDATE USER_INFO
-		SET USER_PW = #{}
-		WHERE USER_PW = #{}
-	</update>
+	<select id="checkPW" parameterType="int" resultType="UserInfoDto">
+		SELECT ui.USER_NO, ui.USER_ID, ui.USER_PW, ui.USER_NAME, ui.USER_EMAIL, 
+			ui.USER_ROLE, ui.USER_PHOTO, ui.USER_ACTIVE, ui.USER_DISTINCT, ui.USER_REGDATE 
+		FROM USER_INFO ui 
+		WHERE USER_NO = #{user_no}
+	</select>
 	
 </mapper>
