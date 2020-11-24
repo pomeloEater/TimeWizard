@@ -1015,5 +1015,5 @@ function submitUpdateModal(todo_no){
 
 /* stopwatch/timer popup event */
 function showPopupStopwatch(todo_no){
-	window.open('/timewizard/stopwatch', 'window_'+todo_no,'width=300, height=190, left=0, top=100, status=no, resizable=no');
+	window.open('/timewizard/stopwatch', 'window_'+todo_no,'width=340, height=190, left=100, top=100, status=no, resizable=no');
 }
