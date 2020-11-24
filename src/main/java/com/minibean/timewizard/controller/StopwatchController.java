@@ -16,10 +16,4 @@ public class StopwatchController {
 		return "stopwatch";
 	}
 	
-	@RequestMapping("/mstopwatch")
-	public String Mstopwatch() {
-		logger.info("[Mstopwatch]");
-		return "mstopwatch";
-	}
-
 }
