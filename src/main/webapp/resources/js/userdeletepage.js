@@ -89,6 +89,7 @@ function confirmUserDelete(){
 	modal__area.appendChild(modal__overlay);
 	modal__area.appendChild(modal__delete);
 }
+
 function closeFirstModal(){
 	let modal__area = document.getElementsByClassName("modal__area")[0];
 	modal__area.innerHTML = "";
