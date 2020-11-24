@@ -11,7 +11,7 @@
 <title>TimeWizard</title>
 <link href="/timewizard/css/actionpage.css" rel="stylesheet">
 <link href="/timewizard/css/userpwchange.css" rel="stylesheet">
-
+<link href="/timewizard/js/userpwchange.js" rel="stylesheet">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://kit.fontawesome.com/3049a69bf8.js" crossorigin="anonymous"></script>
 <script>
@@ -65,32 +65,33 @@ $(document).ready(function(){
 
 	<div class="userpwchangebox">
 		<div class="middlebox">
-			<form action="userpwchangeres" method="post">
+			<form action="userpwchangeres" method="post" class="update_form">
 			<input type="hidden" name="user_no" value="${dto.user_no}">
 				<div class="pwchangebox">
 					<label class="control-label" for="userId">아이디 : </label>
-					<input class="form-control" type="text" id="user_id" name="user_id" value="${dto.user_id }" readonly="readonly"/>
+					<input class="form-control" type="text" id="user_id" value="${dto.user_id }" readonly="readonly"/>
 				</div>
 				<div class="pwchangebox">
 					<label class="control-label" for="userName">성명 : </label>
-					<input class="form-control" type="text" id="user_name" name="user_name" value="${dto.user_name }" readonly="readonly"/>
+					<input class="form-control" type="text" id="user_name"  value="${dto.user_name }" readonly="readonly"/>
 				</div>
 				<div class="pwchangebox">
 					<label class="control-label" for="userPass">패스워드 : </label>
-					<input class="form-control" type="password" id="user_pw" name="user_pw" />
+					<input class="form-control" type="password" id="user_pw" />
 					<i id="icon" class="fas fa-exclamation-triangle"></i>
 				</div>
 				<div class="toggle">
 					<div class="pwchangebox">
 						<label class="control-label" for="newestPass">새 비밀번호(6~10자리) : </label>
-						<input class="form-control" type="password" id="user_newestpw" name="user_newestpw" required="required"/>
+						<input type="password" id="newPW" class="newPW" name="newPW" required="required"/>
 					</div>
 					<div class="pwchangebox">
 						<label class="control-label" for="newestPassConfirm">새 비밀번호 확인 : </label>
-						<input class="form-control" type="password" id="user_newestpw_check" name="user_newestpw_check" required="required"/>
+						<input type="password" id="newPW_check" class="newPW_check" name="newPW_check" required="required"/>
+						<div class="newPW_text"></div>
 					</div>
 					<div class="pwchangebox">
-						<input id="disbtn" class="btn" type="submit" value="변경하기 " />
+						<input id="disbtn" class="btn" type="submit" value="변경하기 " onclick="pw_change();"/>
 						<input type="button" onclick="location.href='mypage'" value="취소" />
 					</div>
 					<div>
