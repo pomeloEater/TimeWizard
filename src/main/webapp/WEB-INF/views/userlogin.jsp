@@ -32,11 +32,9 @@ $(document).ready(function(){
 				"user_id": user_id,
 				"user_pw": user_pw
 		}
-		
 		if (user_id == null || user_id == "" || user_pw == null || user_pw == "" ){
 			alert("ID와 PW를 모두 작성해 주세요");
 		} else {
-		
 			$.ajax({
 				type: "post",
 				url: "/timewizard/login/ajaxlogin",

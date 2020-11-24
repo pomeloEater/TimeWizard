@@ -30,5 +30,5 @@ public interface UserInfoBiz {
 	//이름,이메일,아이디
 	public UserInfoDto findPW(HashMap<String, Object> map);
 	
-	public UserInfoDto CheckPW(int user_no);
+	public UserInfoDto CheckPW(UserInfoDto dto);
 }

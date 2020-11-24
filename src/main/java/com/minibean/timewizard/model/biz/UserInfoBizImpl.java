@@ -105,8 +105,8 @@ public class UserInfoBizImpl implements UserInfoBiz {
 	}
 
 	@Override
-	public UserInfoDto CheckPW(int user_no) {
-		return userInfoDao.CheckPW(user_no);
+	public UserInfoDto CheckPW(UserInfoDto dto) {
+		return userInfoDao.CheckPW(dto);
 	}
 
 }

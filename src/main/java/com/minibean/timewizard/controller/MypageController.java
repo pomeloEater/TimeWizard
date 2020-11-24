@@ -24,6 +24,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -362,16 +363,17 @@ public class MypageController {
 	//암호화한 후 비번변겅 -> 현재 비밀번호 확인
 	@RequestMapping("/checkpw")
 	@ResponseBody
-	public Map<String, Boolean> CheckPW(@RequestParam String user_pw, HttpSession session) {
+	public Map<String, Boolean> CheckPW(@RequestBody UserInfoDto dto, HttpSession session) {
 		logger.info("[Mypage CheckPW]");
-		UserInfoDto userinfodto = (UserInfoDto)session.getAttribute("login");
-		UserInfoDto dto = userinfoBiz.CheckPW(user_no);
-		logger.info("userinfodto dddd : "+userinfodto.getUser_pw());
-		logger.info("dto ddddd: "+dto.getUser_pw());
+		
+		UserInfoDto ddto = userinfoBiz.CheckPW(dto);
+		logger.info("사용자가 입력한 pw0101:" + dto.getUser_pw());
+		logger.info("dkaghghlehls ㅔㅈ0101:"+ddto.getUser_pw());
+
 		boolean check = false;
-		if(passwordEncoder.matches(dto.getUser_pw(), userinfodto.getUser_pw())) {
+		if(passwordEncoder.matches(dto.getUser_pw(), ddto.getUser_pw())) {
 			logger.info("사용자가 입력한 pw:" + dto.getUser_pw());
-			logger.info("dkaghghlehls ㅔㅈ:"+userinfodto.getUser_pw());
+			logger.info("dkaghghlehls ㅔㅈ:"+ddto.getUser_pw());
 			check = true;
 			
 		}

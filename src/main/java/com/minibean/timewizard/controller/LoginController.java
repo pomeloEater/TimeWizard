@@ -97,7 +97,7 @@ public class LoginController {
 		}
 		
 		Map<String, Boolean> map = new HashMap<String, Boolean>();
-		map.put("check", check);
+		map.put("check", check); 
 		
 		return map;
 	}
