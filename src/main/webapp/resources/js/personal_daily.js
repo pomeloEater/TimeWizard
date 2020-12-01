@@ -165,7 +165,7 @@ function showDailyList(date){
 					stopwatch.setAttribute("type","button");
 					stopwatch.setAttribute("class","stopwatch_"+i+" stopwatch");
 					if (linkedUserNo == loginUserNo) {
-						stopwatch.setAttribute("onclick", "showPopupStopwatch("+items[i].todo_no+");");
+						stopwatch.setAttribute("onclick", "showPopupStopwatch("+items[i].todo_no+",'"+items[i].todo_complete+"');");
 					}
 					let stopwatch_css = '.stopwatch_'+i+' { background-color: '+items[i].todo_color+';}'
 										+'.stopwatch_'+i+' .fas { color: white; }';
@@ -1014,6 +1014,11 @@ function submitUpdateModal(todo_no){
 }
 
 /* stopwatch/timer popup event */
-function showPopupStopwatch(todo_no){
-	window.open('/timewizard/stopwatch', 'window_'+todo_no,'width=340, height=190, left=100, top=100, status=no, resizable=no');
+function showPopupStopwatch(todo_no, todo_complete){
+	if(todo_complete == 'N'){
+		window.open('/timewizard/stopwatch', 'window_'+todo_no,'width=340, height=170, left=100, top=100, status=no, resizable=no');
+	} else {
+		let check = confirm('이미 완료된 할 일입니다.\n스탑워치를 열어 시간을 재저장하시겠습니까?');
+		check ? window.open('/timewizard/stopwatch', 'window_'+todo_no,'width=340, height=170, left=50, top=50, status=no, resizable=no'): false;
+	}
 }
