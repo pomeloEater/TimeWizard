@@ -19,6 +19,12 @@ public class StopwatchController {
 	private UserTodoBiz userTodoBiz;
 	private Logger logger = LoggerFactory.getLogger(StopwatchController.class);
 	
+	
+	@RequestMapping(value="/timer")
+	public String timer() {
+		logger.info("[timer]");
+		return "personal_timer";
+	}
 	@RequestMapping(value="/stopwatch")
 	public String Stopwatch() {
 		logger.info("[stopwatch]");
@@ -28,7 +34,7 @@ public class StopwatchController {
 	@RequestMapping("/stopwatch/update")
 	@ResponseBody
 	public int updateTime(@RequestBody UserTodoDto dto) {
-		int res = userTodoBiz.update(dto);
+		int res = userTodoBiz.updateTime(dto);
 		logger.info(">> [CONTROLLER-DAILY] success?: " + ((res == 1)?"yes":"no"));
 		return res;
 	}
