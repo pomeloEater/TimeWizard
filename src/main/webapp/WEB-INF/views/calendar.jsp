@@ -24,12 +24,24 @@
 <script src="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.min.js"></script>
 
 <script src="https://uicdn.toast.com/tui-calendar/latest/tui-calendar.js"></script>
+<script type="text/javascript" src="/timewizard/js/toast_cal.js"></script>
 </head>
 <body>
 
 		<!-- 달력 -->
-    <div id="calendar" style="height: 30%; width: 80%;"></div>
-	<script type="text/javascript" src="/timewizard/js/toast_cal.js"></script>
+	<div id="menu">
+      <span id="menu-navi">
+        <button type="button" class="btn btn-default btn-sm move-today" data-action="move-today">Today</button>
+        <button type="button" class="btn btn-default btn-sm move-day" data-action="move-prev">
+          <i class="calendar-icon ic-arrow-line-left" data-action="move-prev"></i>
+        </button>
+        <button type="button" class="btn btn-default btn-sm move-day" data-action="move-next">
+          <i class="calendar-icon ic-arrow-line-right" data-action="move-next"></i>
+        </button>
+      </span>
+      <span id="renderRange" class="render-range"></span>
+    </div>
+    <div id="calendar" style="height: 30%; width: 50%;"></div>
 
 </body>
 </html>

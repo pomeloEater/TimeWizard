@@ -187,10 +187,8 @@ $(document).ready(function() {
 	$('input[name=user_id]').keyup(function() {
 		var idCheck = $('input[name=user_id]').val();
 			$.ajax({
-
 				url : 'idcheck?user_id=' + idCheck,
 				type : 'get',
-
 				success : function(data) {
 					var idPass;
 					var idRegex = /^[A-Za-z0-9]{4,12}$/;
@@ -307,7 +305,6 @@ $(document).ready(function() {
 				}else{ 
 					$("#pw_text").html('비밀번호가 일치합니다.');
 					$("#pw_text").css('color','#ddd');
-					
 					$("#submit").attr("disabled", "disabled");
 				}
 			
@@ -315,7 +312,6 @@ $(document).ready(function() {
 			}else if((pwd1 != pwd2) && pwd2 != ""){  
 				$("#pw_text").html('비밀번호가 일치하지 않습니다.');
 				$("#pw_text").css('color','red');
-				
 				$("#submit").attr("disabled", "disabled");
 					
 			}
@@ -356,11 +352,8 @@ function email_check_code(data){
 				<p class="signuptext">Create Account</p>
 				<p class="signuptext2">or user your email for registration:</p>
 				<div class="contentbox">
-
-
 					<input type="text" placeholder="아이디(4~12자리)" name="user_id" class="user_id" required="required" autofocus />
 					<div id="idc"></div>
-
 				</div>
 				<div class="contentbox">
 					<input type="password" placeholder="비밀번호(6~10자리)" name="user_pw" id="pwd1" required="required"/>
