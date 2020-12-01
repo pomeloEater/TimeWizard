@@ -233,6 +233,7 @@ function uploadBlob(blob){
 	formData.append("file",blob);
 	xhr.open("POST", "/timewizard/file/upload");
 	xhr.send(formData);
+	console.log("UPLOAD COMPLETE!");
 	/* answer을 받아서 true가 되면 성공 메세지 띄우기! */
 	xhr.onreadystatechange = () => {
 		if (xhr.readyState == 4 && xhr.status == 200){
