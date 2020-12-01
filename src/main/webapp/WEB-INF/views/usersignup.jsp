@@ -184,7 +184,7 @@ input[type=submit] {
 <script>
 //아이디 중복체크 입니다.
 $(document).ready(function() {
-	$('input[name=user_id]').blur(function() {
+	$('input[name=user_id]').keyup(function() {
 		var idCheck = $('input[name=user_id]').val();
 			$.ajax({
 
@@ -280,7 +280,7 @@ $(document).ready(function() {
 
 // 비밀번호 체크
 	$(function() {
-		$("input").keyup(function() {
+		$("#pwd1").keyup(function() {
 			var pwd1 = $("#pwd1").val().trim();
 			var pwd2 = $("#pwd2").val().trim();
 			

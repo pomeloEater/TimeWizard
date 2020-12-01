@@ -109,4 +109,9 @@ public class UserInfoBizImpl implements UserInfoBiz {
 		return userInfoDao.CheckPW(dto);
 	}
 
+	@Override
+	public int updateNewPW(int user_no) {
+		return userInfoDao.updateNewPW(user_no);
+	}
+
 }

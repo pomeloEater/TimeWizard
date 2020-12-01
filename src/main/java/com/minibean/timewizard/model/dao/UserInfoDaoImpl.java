@@ -246,4 +246,17 @@ public class UserInfoDaoImpl implements UserInfoDao {
 		return result;
 	}
 
+	@Override
+	public int updateNewPW(int user_no) {
+		logger.info(">> [UserINFO] updateNewPW : user_no  : " +user_no);
+		int res = 0;
+		try {
+			res = sqlSession.update(NAMESPACE+"newPWchange", user_no);
+		} catch (Exception e) {
+			logger.info("[ERROR] updateNewPW");
+			e.printStackTrace();
+		}
+		return res;
+	}
+
 }

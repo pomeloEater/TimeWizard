@@ -123,7 +123,7 @@ public class MypageController {
 	}
 	
 	
-	/* 비밀번호 변경 */
+	/* 비밀번호 변경 페이지 */
 	@RequestMapping("/userpwchange")
 	public String UserPwChange(Model model, @RequestParam int user_no) {
 		logger.info("[user password change]");
@@ -134,60 +134,27 @@ public class MypageController {
 		
 	}
 	
+	//새로운 비밀번호로 update + 암호화
 	@RequestMapping("/userpwchangeres")
-	public void UserPwChangeRes(HttpServletResponse response, HttpSession session, UserInfoDto dto, @RequestParam String user_newestpw_check, @RequestParam String user_newestpw, @RequestParam int user_no) throws Exception {
-		logger.info("[user pw change Result]");
+	public String UserPwChangeRes() {
+		logger.info("[UserPW ChangeRes Controller]");
 		
-		UserInfoDto user = (UserInfoDto) session.getAttribute("login");
-		// 기존 패스워드
-		String user_pw = user.getUser_pw();
-		// 사용자가 비밀번호 변경 페이지의 '기존 패스워드' 칸에 입력한 암호
-		String new_pw = dto.getUser_pw();
 		
-		// '새 비밀번호'와 '새 비밀번호 확인'을 setter에 담아주고 get으로 가져옴
-		dto.setUser_newestpw(user_newestpw);
-		dto.setUser_newestpw_check(user_newestpw_check);
-		String newestpw = dto.getUser_newestpw();
-		String newestpwcheck = dto.getUser_newestpw_check();
+		return "";
+	}
+	
+	//암호변경 -> 비밀번호 확인
+	@RequestMapping("/pw_check")
+	@ResponseBody
+	public boolean pw_check(@RequestParam String user_pw, HttpSession session) {
+		boolean check = false;
 		
-		//기존 비밀번호 불일치로 암호 변경 실패
-		if(!(user_pw.equals(new_pw))) {
-			
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>alert('기존 패스워드가 불일치합니다. 암호 변경에 실패했습니다.'); location.href='/timewizard/mypage'</script>");
-			out.flush();
-			
-		} else {
-			
-			// 새 비밀번호와 새 비밀번호 확인이 일치하면
-			if (newestpw.equals(newestpwcheck)) {
-			
-			logger.info("user_newestpw :"+newestpw);
-			logger.info("user_no :"+user_no);
-			
-			// 비밀번호 변경
-			int res = userinfoBiz.pwChangeRes(dto);
-			  
-			if(res != 0) {
-				
-				System.out.println("암호 변경 성공");
-				response.setContentType("text/html; charset=UTF-8");
-				PrintWriter out = response.getWriter();
-				out.println("<script>alert('비밀번호가 변경되었습니다. 변경된 비밀번호로 다시 로그인하실 수 있습니다.'); location.href='/timewizard/login/loginform';</script>");
-				out.flush();
-				session.invalidate();
-				}
-			
-			} else {
-				
-				System.out.println("암호 변경 실패");
-				response.setContentType("text/html; charset=UTF-8");
-				PrintWriter out = response.getWriter();
-				out.println("<script>alert('새 비밀번호와 새 비밀번호 확인이 일치하지 않습니다. 암호 변경에 실패했습니다.'); location.href='/timewizard/mypage'; </script>");
-				out.flush();
-			}
+		UserInfoDto res = (UserInfoDto) session.getAttribute("login");
+		String pw = passwordEncoder.encode(user_pw);
+		if(res.getUser_pw().equals(pw)) {
+			check=true;
 		}
+		return check;
 	}
 	
 	@RequestMapping(value="/profileupload")
@@ -279,10 +246,6 @@ public class MypageController {
 		}
 		
 	}
-	
-	
-
-	
 	
 	
 	/* NAME, EMAIL 변경 */
