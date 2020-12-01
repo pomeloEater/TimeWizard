@@ -7,7 +7,7 @@
 <title>stopwatch :: TIWI</title>
 </head>
 <style type="text/css">
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
 /* globals */
 html, body {
   height: 100%;

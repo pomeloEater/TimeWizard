@@ -24,6 +24,7 @@
 	<resources location="/resources/image/" mapping="/image/**" />
 	<resources location="/resources/font/" mapping="/font/**" />
 	<resources location="/resources/video/" mapping="/video/**" />
+	<resources location="/resources/audio/" mapping="/audio/**" />
 	<!-- <default-servlet-handler/> -->
 	
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
