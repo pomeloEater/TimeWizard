@@ -21,10 +21,15 @@ public interface UserInfoDao {
 	public int pwChangeRes(UserInfoDto dto);
 	public int userInfoChange(UserInfoDto dto);
 	public int profileChange(UserInfoDto dto);
+	//비밀번호 암호화한 후 로그인
+	public UserInfoDto login(UserInfoDto dto);
 	
 	//아이디 찾기
 	public UserInfoDto findID(String user_email);
 	//비밀번호 찾기
 	public UserInfoDto findPW(HashMap<String, Object> map);
-	
+	//마이페이지에서 암호변경할때 기존비밀번호 확인
+	public UserInfoDto CheckPW(UserInfoDto dto);
+	//마이페이지에서 암호변경할때 새로운 비밀번호 update
+	public int updateNewPW(int user_no);
 }

@@ -82,7 +82,7 @@ public class LoginController {
 	public Map<String, Boolean> ajaxLogin(@RequestBody UserInfoDto dto, HttpSession session){
 		logger.info(">> [CONTROLLER-USERINFO] ajax login");
 		
-		UserInfoDto res = userInfoBiz.selectOne(dto);
+		UserInfoDto res = userInfoBiz.login(dto);
 		boolean check = false;
 		
 		if (res != null) {
@@ -97,7 +97,7 @@ public class LoginController {
 		}
 		
 		Map<String, Boolean> map = new HashMap<String, Boolean>();
-		map.put("check", check);
+		map.put("check", check); 
 		
 		return map;
 	}
