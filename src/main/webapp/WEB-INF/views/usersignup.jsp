@@ -269,62 +269,59 @@ $(document).ready(function() {
 			$(".name_text").text("이름을 입력해주세요.").css("color","red");
 			$(".control_button_in").attr("disabled", true);
 		}else{
+			$(".name_text").text("");
 			$(".control_button_in").attr("disabled", false);
 		}
 	});
-});
-
-
-// 비밀번호 체크
-	$(function() {
-		$("#pwd1").keyup(function() {
-			var pwd1 = $("#pwd1").val().trim();
-			var pwd2 = $("#pwd2").val().trim();
-			
-			let num = /[0-9]/g;
-			let eng = /[a-z]/ig;
-			let spe = /[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi;
-			let blank = /₩s/;
-			
-			//두 비밀번호가 같으면!!!
-			if ((pwd1 == pwd2) && pwd1 != "") {
-				//두 비밀번호가 같아도, 길이가 6보다 작고 12보다 크면, 다시 입력하게
-				if(pwd1.length < 6 || pwd1.length > 10 || pwd2.length < 6 || pwd2.length > 10){
-					$("#pw_text").html('6~10자 이내로 입력해주세요.');
-					$("#pw_text").css('color','red');
-					$("#submit").attr("disabled", "disabled");
-				
-				//두 비밀번호가 같아도,영문, 숫자, 특수문자 중 2가지 이상 혼합하여 입력해주세요
-				}else if((pwd1.search(num) < 0 && pwd1.search(eng) < 0) 
-						|| (pwd1.search(eng) < 0 && pwd1.search(spe) < 0) 
-						|| (pwd1.search(spe) < 0 && (pwd1.search(num) < 0))){
-					$("#pw_text").html('영문, 숫자, 특수문자 중 2가지 이상 혼합하여 입력해주세요.');
-					$("#pw_text").css('color','red');
-				
-				//두 비밀번호가 같다면 && 길이가 6-10자 이내
-				}else{ 
-					$("#pw_text").html('비밀번호가 일치합니다.');
-					$("#pw_text").css('color','#ddd');
-					$("#submit").attr("disabled", "disabled");
-				}
-			
-			//두 비밀번호가 다르면,
-			}else if((pwd1 != pwd2) && pwd2 != ""){  
-				$("#pw_text").html('비밀번호가 일치하지 않습니다.');
+	
+	$("#pwd1").keyup(function() {
+		var pwd1 = $("#pwd1").val().trim();
+		var pwd2 = $("#pwd2").val().trim();
+		
+		let num = /[0-9]/g;
+		let eng = /[a-z]/ig;
+		let spe = /[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi;
+		let blank = /₩s/;
+		
+		//두 비밀번호가 같으면!!!
+		if ((pwd1 == pwd2) && pwd1 != "") {
+			//두 비밀번호가 같아도, 길이가 6보다 작고 12보다 크면, 다시 입력하게
+			if(pwd1.length < 6 || pwd1.length > 12 || pwd2.length < 6 || pwd2.length > 12){
+				$("#pw_text").html('6~12자 이내로 입력해주세요.');
 				$("#pw_text").css('color','red');
 				$("#submit").attr("disabled", "disabled");
-					
-			}
-			//비밀번호가 입력이 안됐을때,
-			else if(pwd1 == "" || pwd2 == ""){
-				$("#pw_text").html('비밀번호를 입력해주세요.');
-				$("#pw_text").css('color','red');
-				
-			}
 			
-		});
+			//두 비밀번호가 같아도,영문, 숫자, 특수문자 중 2가지 이상 혼합하여 입력해주세요
+			}else if((pwd1.search(num) < 0 && pwd1.search(eng) < 0) 
+					|| (pwd1.search(eng) < 0 && pwd1.search(spe) < 0) 
+					|| (pwd1.search(spe) < 0 && (pwd1.search(num) < 0))){
+				$("#pw_text").html('영문, 숫자, 특수문자 중 2가지 이상 혼합하여 입력해주세요.');
+				$("#pw_text").css('color','red');
+			
+			//두 비밀번호가 같다면 && 길이가 6-12자 이내
+			}else{ 
+				$("#pw_text").html('비밀번호가 일치합니다.');
+				$("#pw_text").css('color','#ddd');
+				$("#submit").attr("disabled", "disabled");
+			}
+		
+		//두 비밀번호가 다르면,
+		}else if((pwd1 != pwd2) && pwd2 != ""){  
+			$("#pw_text").html('비밀번호가 일치하지 않습니다.');
+			$("#pw_text").css('color','red');
+			$("#submit").attr("disabled", "disabled");
+				
+		}
+		//비밀번호가 입력이 안됐을때,
+		else if(pwd1 == "" || pwd2 == ""){
+			$("#pw_text").html('비밀번호를 입력해주세요.');
+			$("#pw_text").css('color','red');
+			
+		}
+		
 	});
-	
+});
+
 function email_check_code(data){
 	
 	$("#email_auto_code_button").click(function(){

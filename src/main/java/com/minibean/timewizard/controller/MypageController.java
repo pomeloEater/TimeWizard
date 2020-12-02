@@ -134,16 +134,8 @@ public class MypageController {
 		
 	}
 	
-	//새로운 비밀번호로 update + 암호화
-	@RequestMapping("/userpwchangeres")
-	public String UserPwChangeRes() {
-		logger.info("[UserPW ChangeRes Controller]");
-		
-		
-		return "";
-	}
 	
-	//암호변경 -> 비밀번호 확인
+	//암호변경 -> 기존 비밀번호 확인
 	@RequestMapping("/pw_check")
 	@ResponseBody
 	public boolean pw_check(@RequestParam String user_pw, HttpSession session) {
@@ -155,6 +147,14 @@ public class MypageController {
 			check=true;
 		}
 		return check;
+	}
+	//새로운 비밀번호로 update + 암호화
+	@RequestMapping("/userpwchangeres")
+	public String UserPwChangeRes() {
+		logger.info("[UserPW ChangeRes Controller]");
+		
+		
+		return "";
 	}
 	
 	@RequestMapping(value="/profileupload")

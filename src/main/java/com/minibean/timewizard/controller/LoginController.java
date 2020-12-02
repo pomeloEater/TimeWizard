@@ -235,6 +235,7 @@ public class LoginController {
 		
 		UserInfoDto inserted = userInfoBiz.selectOne(dto);
 		int insertPay = paybiz.insertPay(new PayDto(inserted.getUser_no(),"N",0));
+		
 		if ((res + insertPay)==2) {
 			return "redirect:loginform";
 		} else {

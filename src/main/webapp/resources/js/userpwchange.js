@@ -10,7 +10,6 @@ function pw_change(){
 		url: "/timewizard/pw_check?user_pw="+pw,
 		type: "post",
 		success: function(data){
-			console.log(data);
 			if(pw != pw_check){
 				$(".newPW_text").text("비밀번호가 서로 다릅니다.").css("color","red");
 			}else{
@@ -27,4 +26,5 @@ function pw_change(){
 		}
 	});
 }
+
 
