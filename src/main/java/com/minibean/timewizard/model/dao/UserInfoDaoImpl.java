@@ -247,11 +247,11 @@ public class UserInfoDaoImpl implements UserInfoDao {
 	}
 
 	@Override
-	public int updateNewPW(int user_no) {
-		logger.info(">> [UserINFO] updateNewPW : user_no  : " +user_no);
+	public int updateNewPW(UserInfoDto dto) {
+		logger.info(">> [UserINFO] updateNewPW : user_no  : " +dto.getUser_no());
 		int res = 0;
 		try {
-			res = sqlSession.update(NAMESPACE+"newPWchange", user_no);
+			res = sqlSession.update(NAMESPACE+"newPWchange", dto);
 		} catch (Exception e) {
 			logger.info("[ERROR] updateNewPW");
 			e.printStackTrace();

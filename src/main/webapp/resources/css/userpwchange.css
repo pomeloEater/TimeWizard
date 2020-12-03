@@ -59,3 +59,7 @@ input[type=submit]:hover {
 	background-color: white;
 	color: var(--background-color);
 }
+
+input::placehoder{
+	font-size: 6px;
+}

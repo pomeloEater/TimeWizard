@@ -134,16 +134,8 @@ public class MypageController {
 		
 	}
 	
-	//새로운 비밀번호로 update + 암호화
-	@RequestMapping("/userpwchangeres")
-	public String UserPwChangeRes() {
-		logger.info("[UserPW ChangeRes Controller]");
-		
-		
-		return "";
-	}
 	
-	//암호변경 -> 비밀번호 확인
+	//암호변경 -> 기존 비밀번호 확인
 	@RequestMapping("/pw_check")
 	@ResponseBody
 	public boolean pw_check(@RequestParam String user_pw, HttpSession session) {
@@ -155,6 +147,27 @@ public class MypageController {
 			check=true;
 		}
 		return check;
+	}
+	//새로운 비밀번호로 update + 암호화
+	@RequestMapping("/userpwchangeres")
+	public String UserPwChangeRes(UserInfoDto dto) {
+		logger.info("[UserPW ChangeRes Controller]");
+		
+		//dto.setUser_pw(passwordEncoder.encode(dto.getUser_pw()));
+		//logger.info("암호화됨 pw : "+dto.getUser_pw());
+		//int res = userInfoBiz.insert(dto);
+		
+		logger.info("user_no 3333: "+dto.getUser_no());
+		logger.info("user_pw 333 : "+dto.getUser_pw());
+		
+		
+		dto.setUser_pw(passwordEncoder.encode(dto.getUser_pw()));
+		int res = userinfoBiz.updateNewPW(dto);
+		logger.info("updatePW user_no6666 : "+dto.getUser_no()+","+dto.getUser_pw());
+		if(res > 0) {
+			return "redirect:mypage";
+		}
+		return "redirect:mypage";
 	}
 	
 	@RequestMapping(value="/profileupload")

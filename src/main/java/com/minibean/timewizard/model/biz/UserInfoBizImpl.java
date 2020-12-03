@@ -110,8 +110,8 @@ public class UserInfoBizImpl implements UserInfoBiz {
 	}
 
 	@Override
-	public int updateNewPW(int user_no) {
-		return userInfoDao.updateNewPW(user_no);
+	public int updateNewPW(UserInfoDto dto) {
+		return userInfoDao.updateNewPW(dto);
 	}
 
 }
