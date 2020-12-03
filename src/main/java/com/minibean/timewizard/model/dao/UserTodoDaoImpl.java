@@ -117,6 +117,21 @@ public class UserTodoDaoImpl implements UserTodoDao {
 		
 		return res;
 	}
+	
+	@Override
+	public int updateTime(UserTodoDto dto) {
+		logger.info(">> [USERTODO] update time - " + dto.getTodo_no());
+		int res = 0;
+		
+		try {
+			res = sqlSession.update(NAMESPACE+"updateTime", dto);
+		} catch (Exception e) {
+			logger.info("[ERROR] USERTODO :: update time");
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
 
 	@Override
 	public int delete(int todo_no) {
