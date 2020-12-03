@@ -32,5 +32,5 @@ public interface UserInfoBiz {
 	//마이페이지에서 암호변경할때 기존비밀번호 확인
 	public UserInfoDto CheckPW(UserInfoDto dto);
 	//마이페이지에서 암호변경할때 새로운 비밀번호 update
-	public int updateNewPW(int user_no);
+	public int updateNewPW(UserInfoDto dto);
 }

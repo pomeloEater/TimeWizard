@@ -86,7 +86,8 @@
 	</update>
 	
 	<update id="profileChange" parameterType="UserInfoDto">
-		UPDATE USER_INFO SET USER_PHOTO = #{user_photo}
+		UPDATE USER_INFO 
+		SET USER_PHOTO = #{user_photo}
 		WHERE USER_NO = #{user_no}
 	</update>
 
@@ -115,7 +116,7 @@
 	</select>
 
 	<!-- 새 비밀번호 update -->
-	<update id="newPWchange" parameterType="int">
+	<update id="newPWchange" parameterType="UserInfoDto">
 		UPDATE USER_INFO
 		SET USER_PW = #{user_pw}
 		WHERE USER_NO = #{user_no}
