@@ -21,13 +21,15 @@
 
 
 ### 🚩개발 환경
-* 사용 언어 : Java, JavaScript, HTML, CSS
-* 사용 기술 : MyBatis, jQuery
-* 사용 API : SNS 로그인(NAVER, kakao, Google), Summernote, D3.js, Frappe, Toast UI Calendar, socket.io, stompJS, rtcMulticonnection, recordRTC, html2canvas, 카카오공유하기, 카카오i 챗봇, 카카오 지도, 아임포트-이니시스
-* 사용 도구 : Eclipse IDE, Visual Studio Code
-* 사용 DB : Oracle Database 11g
-* 사용 서버 : Apache Tomcat 9.0
-* 협업 도구 : Github, Notion
+- 사용 언어 : Java, JavaScript, HTML, CSS
+- 사용 프레임워크 : MyBatis
+- 사용 라이브러리 : jQuery, D3.js, Frappe, Summernote, TOAST UI Calendar, Socket.IO, STOMP.js, RTCMultiConnection.js, RecordRTC, Ffmpeg.js, html2canvas
+- 사용 API : SNS 로그인(NAVER, kakao, Google), 카카오링크, 카카오지도, 아임포트
+- 기타 : 카카오i오픈빌더 챗봇
+- 사용 DB : Oracle Database 11g
+- 사용 서버 : Apache Tomcat 9.0
+- 사용 도구 : Eclipse IDE, Visual Studio Code
+- 협업 도구 : Github, Notion
 
 
 ### 🚩개발 동기
