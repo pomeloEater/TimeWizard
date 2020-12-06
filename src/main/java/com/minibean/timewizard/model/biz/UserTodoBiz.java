@@ -15,6 +15,7 @@ public interface UserTodoBiz {
 	public int insert(UserTodoDto dto);
 	public int insertExample(int user_no);
 	public int update(UserTodoDto dto);
+	public int updateTime(UserTodoDto dto);
 	public int delete(int todo_no);
 	
 	//weekly

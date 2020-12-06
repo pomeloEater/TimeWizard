@@ -51,6 +51,11 @@ public class UserTodoBizImpl implements UserTodoBiz {
 	public int update(UserTodoDto dto) {
 		return userTodoDao.update(dto);
 	}
+	
+	@Override
+	public int updateTime(UserTodoDto dto) {
+		return userTodoDao.updateTime(dto);
+	}
 
 	@Override
 	public int delete(int todo_no) {
